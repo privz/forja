@@ -61,3 +61,13 @@ Verificação: personalização salva, registros anteriores presentes e navegaç
 - Página isolada de demonstração em `previews/movimento.html`, com reprodução manual de três animações, botão repetir e estado de execução visível.
 - Controle explícito de movimento, respeitando inicialmente a preferência de movimento reduzido. Não acessa registros ou dados do app.
 - Conceito provisório de punho utilizado somente na demonstração. Ícone principal do aplicativo preservado.
+
+## 0.5.0 — 2026-11-01
+
+- Identidade aplicada com punho enfaixado na direção Anime, no cabeçalho e nos ícones de instalação.
+- Tipografia sem serifa: Barlow Condensed para títulos e Manrope para leitura. Fontes e licenças incluídas localmente para uso offline, sem dependência do Google Fonts em tempo de execução.
+- Quatro símbolos vetoriais próprios na navegação: punho, caminho de evolução, pergaminho e insígnia. Mantidos os rótulos e indicação acessível de aba ativa.
+- Celebração principal de conquista com logo, luz, partículas breves e revelação da recompensa; confirmação simples para tarefas comuns. Movimento reduzido respeitado e botão de continuar/tecla Escape disponíveis.
+- Ícones PNG gerados em 180, 192 e 512 px e cache offline atualizado.
+
+Logo: criada com ferramenta integrada image_gen usando a direção Anime da comparação aprovada como referência. Prompt final: standalone square app icon, dark forest green background, athletic fist with cream wraps in dynamic shonen anime 3/4 punching perspective, strong ink lines, warm gold highlights, emerald shadows, short wrist, subtle gold brushstroke, no text or franchise marks. Arquivo original em `public/assets/forja-mark.png`.
