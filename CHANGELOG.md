@@ -71,3 +71,13 @@ Verificação: personalização salva, registros anteriores presentes e navegaç
 - Ícones PNG gerados em 180, 192 e 512 px e cache offline atualizado.
 
 Logo: criada com ferramenta integrada image_gen usando a direção Anime da comparação aprovada como referência. Prompt final: standalone square app icon, dark forest green background, athletic fist with cream wraps in dynamic shonen anime 3/4 punching perspective, strong ink lines, warm gold highlights, emerald shadows, short wrist, subtle gold brushstroke, no text or franchise marks. Arquivo original em `public/assets/forja-mark.png`.
+
+## 0.5.1 — 2026-11-01
+
+- Correção de largura intrínseca de campos de data/horário do Safari: largura e tamanho mínimo limitados ao cartão, aparência nativa ajustada e texto de formulário mantido em 16 px.
+- Ajustes de área segura, navegação, formulários e diálogos; altura disponível acompanha visualViewport para reduzir cortes quando o espaço visível muda.
+- Símbolo Hoje passa a usar o punho da própria logo, substituindo o desenho simplificado.
+- Opções de movimento: seguir sistema, completo, suave ou sem movimento. Botão de teste da celebração sem alteração de registros.
+- Confirmação visual breve no registro diário e celebração completa reservada à meta concluída.
+
+Verificação: campos de diário e diálogo medidos dentro de seus contêineres em viewport móvel de 390 px e em espaço reduzido de 320 × 480. Conferência no navegador de desktop; Safari/PWA e teclado físico do iPhone ainda exigem confirmação no aparelho.
