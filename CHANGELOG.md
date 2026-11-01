@@ -34,3 +34,12 @@ Limites: coleção diária de imagens, feriados e nova família de ícones de na
 - Publicação no GitHub Pages e testes automatizados básicos.
 
 Validação inicial: registro e diário persistiram após recarregar no navegador; edição de meta e resgate conferidos. Instalação no iPhone, widgets, restauração pela interface e offline real ainda pendentes de validação.
+
+## 0.3.0 — 2026-11-01
+
+- Jornada redesenhada com cabeçalho ilustrado, calendário em painel, seleção dourada e resumo compacto do dia.
+- Removidos os controles duplicados de planejamento da tela; nota curta recolhida e tarefas com caixas de marcação.
+- Arte do Midoriya adicionada à seleção visual junto do Rock Lee.
+- Duas falas curtas com personagem, episódio e indicação de tradução própria nas configurações.
+- Fontes dos trechos: Naruto episódio 48 (transcrição em https://transcripts.foreverdreaming.org/viewtopic.php?t=76298) e My Hero Academia episódio 13.5 (https://subs.yakuaru.com/books/my-hero-academia/page/e135-hero-notebook/edit?editor=markdown-clean).
+- Imagem Midoriya criada com image_gen integrado, prompt: personagem em treino no terraço ao nascer do sol, visual anime cinematográfico verde e dourado, sem texto.
