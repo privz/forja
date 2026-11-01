@@ -1,4 +1,4 @@
-// FORJA 0.8.2 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// FORJA 0.9.0 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
 // Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
 /* BUNDLED_CONTENT */
 const APP='https://privz.github.io/forja/';
@@ -52,10 +52,11 @@ async function renderCalendar(){
   line(w,calendar.hasSnapshot?'Checks · envio '+updated:'Envie os checks pelo FORJA',8,false,1);return;
  }
  w.backgroundColor=new Color('10251b');w.setPadding(10,10,10,10);
+ if(family==='large'){await calendarBanner(w,280,88);w.addSpacer(6);line(w,monthName.charAt(0).toUpperCase()+monthName.slice(1)+' '+calendar.year,12,true,1);w.addSpacer(2);monthGrid(w,calendar,280);w.addSpacer(6);calendarTasks(w,3);return;}
  if(family==='small'){line(w,monthName.toUpperCase()+' '+calendar.year,11,true,1);w.addSpacer(3);monthGrid(w,calendar,144);return;}
  const row=w.addStack();row.layoutHorizontally();row.centerAlignContent();const hero=row.addStack();hero.layoutVertically();hero.size=new Size(116,128);hero.cornerRadius=12;hero.setPadding(9,9,9,9);hero.backgroundColor=new Color('183526');
  try{const cache=fm.joinPath(fm.cacheDirectory(),'forja-'+inspiration.art.id+'.png');let image;if(fm.fileExists(cache))image=fm.readImage(cache);else{const request=new Request(APP+inspiration.art.src.replace('./',''));request.timeoutInterval=12;image=await request.loadImage();fm.writeImage(cache,image);}const ctx=new DrawContext();ctx.size=new Size(232,256);ctx.respectScreenScale=false;ctx.opaque=true;const scale=Math.max(232/image.size.width,256/image.size.height),width=image.size.width*scale,height=image.size.height*scale;ctx.drawImageInRect(image,new Rect((232-width)/2,Math.min(0,45-height*.25),width,height));ctx.setFillColor(new Color('05120c',.48));ctx.fillRect(new Rect(0,0,232,256));hero.backgroundImage=ctx.getImage();}catch(_){}
- line(hero,'FORJA /',9,true,1);hero.addSpacer();line(hero,inspiration.quote.text,12,true,4);hero.addSpacer(3);line(hero,inspiration.quote.credit.split(' · ')[0],8,false,1);hero.addSpacer(5);line(hero,challenge?.current?challenge.title+' · '+score:'No seu ritmo.',9,true,1);
+ line(hero,'FORJA /',9,true,1);hero.addSpacer();line(hero,inspiration.quote.text,12,true,4);hero.addSpacer(3);line(hero,inspiration.quote.credit.split(' · ')[0],8,false,1);hero.addSpacer(5);const today=data.calendar?.today;line(hero,today?.date===calendar.today?`${today.done}/${today.total} tarefas${today.completed?' ✓':''}`:challenge?.current?challenge.title+' · '+score:'Envie as tarefas de hoje.',9,true,1);
  row.addSpacer();const grid=row.addStack();grid.layoutVertically();grid.size=new Size(145,0);line(grid,monthName.charAt(0).toUpperCase()+monthName.slice(1)+' '+calendar.year,11,true,1);grid.addSpacer(3);monthGrid(grid,calendar,145);
  if(family==='large'){w.addSpacer(14);line(w,'Um dia de cada vez.',14,true,1);line(w,calendar.hasSnapshot?'Checks do último envio do FORJA.':'Envie os dias concluídos pelo FORJA.',11,false,2);}
 }
@@ -68,14 +69,28 @@ function monthGrid(parent,calendar,width){
 function calendarRow(parent,cells,heading=false,accessory=false,width=145){
  // Draw the entire row at a fixed size: native horizontal stacks can squeeze
  // two-digit labels between flexible spacers and truncate their second glyph.
- const height=heading?11:(accessory?20:15),column=width/7,fontSize=heading?7:(accessory?10:9);
+ const roomy=width>200,height=heading?11:(accessory?20:roomy?17:15),column=width/7,fontSize=heading?7:(accessory?10:roomy?10:9);
  const ctx=new DrawContext();ctx.size=new Size(width,height);ctx.respectScreenScale=true;ctx.opaque=false;ctx.setTextAlignedCenter();
  cells.forEach((day,index)=>{const x=index*column,center=x+column/2;
   if(day.today){ctx.setFillColor(accessory?ink:new Color('f3cb75'));const diameter=accessory?16:13;ctx.fillEllipse(new Rect(center-diameter/2,0,diameter,diameter));}
   ctx.setFont(day.today?Font.boldSystemFont(fontSize):Font.systemFont(fontSize));
   const color=day.today?(accessory?Color.dynamic(Color.white(),Color.black()):new Color('10251b')):day.completed&&!accessory?new Color('83dfad'):ink;
-  ctx.setTextColor(color);ctx.drawTextInRect(day.label??String(day.day),new Rect(x,0,column,heading?11:(accessory?15:12)));
-  if(day.completed&&!heading){ctx.setStrokeColor(accessory?ink:new Color('83dfad'));ctx.setLineWidth(.8);const tick=new Path(),y=accessory?17:12;tick.move(new Point(center-2,y));tick.addLine(new Point(center-.5,y+1.5));tick.addLine(new Point(center+2.5,y-1.5));ctx.addPath(tick);ctx.strokePath();}
+  ctx.setTextColor(color);ctx.drawTextInRect(day.label??String(day.day),new Rect(x,0,column,heading?11:(accessory?15:roomy?13:12)));
+  if(day.completed&&!heading){ctx.setStrokeColor(accessory?ink:new Color('83dfad'));ctx.setLineWidth(.8);const tick=new Path(),y=accessory?17:roomy?14:12;tick.move(new Point(center-2,y));tick.addLine(new Point(center-.5,y+1.5));tick.addLine(new Point(center+2.5,y-1.5));ctx.addPath(tick);ctx.strokePath();}else if(day.active&&!heading){ctx.setFillColor(accessory?ink:new Color('9fb5a4'));ctx.fillEllipse(new Rect(center-1,height-2,2,2));}
  });
  const image=parent.addImage(ctx.getImage());image.imageSize=new Size(width,height);image.leftAlignImage();
+}
+
+async function calendarBanner(parent,width,height){
+ const ctx=new DrawContext();ctx.size=new Size(width,height);ctx.respectScreenScale=true;ctx.opaque=true;ctx.setFillColor(new Color('163624'));ctx.fillRect(new Rect(0,0,width,height));let loaded=false;
+ try{const cache=fm.joinPath(fm.cacheDirectory(),'forja-'+inspiration.art.id+'.png');let art;if(fm.fileExists(cache))art=fm.readImage(cache);else{const request=new Request(APP+inspiration.art.src.replace('./',''));request.timeoutInterval=8;art=await request.loadImage();fm.writeImage(cache,art);}const scale=Math.max(width/art.size.width,height/art.size.height),aw=art.size.width*scale,ah=art.size.height*scale;ctx.drawImageInRect(art,new Rect((width-aw)/2,Math.min(0,height*.4-ah*.25),aw,ah));loaded=true;}catch(_){}
+ ctx.setFillColor(new Color('06160f',.58));ctx.fillRect(new Rect(0,0,width,height));ctx.setTextAlignedLeft();ctx.setTextColor(new Color('fff5df'));ctx.setFont(Font.boldSystemFont(9));ctx.drawTextInRect('FORJA / SUA JORNADA',new Rect(10,6,width-20,12));ctx.setFont(Font.boldSystemFont(inspiration.quote.text.length>140?9:inspiration.quote.text.length>100?10:inspiration.quote.text.length>60?12:15));ctx.drawTextInRect(inspiration.quote.text,new Rect(10,21,width-20,49));ctx.setFont(Font.systemFont(8));ctx.drawTextInRect(inspiration.quote.credit.split(' · ')[0],new Rect(10,height-14,width-20,11));
+ const image=parent.addImage(ctx.getImage());image.imageSize=new Size(width,height);image.leftAlignImage();
+ if(!loaded)line(parent,'Arte: execute Forja no Scriptable com internet.',8,false,1);
+}
+function calendarTasks(parent,limit){const tasks=data.calendar?.today,today=widgetDate(now);
+ if(!tasks||tasks.date!==today){line(parent,'Tarefas de hoje · envie novamente pelo FORJA',10,true,2);return;}
+ line(parent,tasks.completed?'✓ Dia concluído':tasks.total?'Hoje · '+tasks.done+'/'+tasks.total+' concluídas':'Hoje · sem tarefas programadas',11,true,1);parent.addSpacer(2);
+ for(const task of tasks.items.slice(0,limit))line(parent,(task.done?'✓ ':'○ ')+task.title,10,false,1);
+ const remaining=tasks.total-Math.min(tasks.items.length,limit);if(remaining>0)line(parent,'+'+remaining+' no FORJA · toque para abrir',8,false,1);
 }

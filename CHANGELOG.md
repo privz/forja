@@ -145,3 +145,10 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Recuperação das versões antigas nas telas Hoje, Conquistas e Configurações ao ativar o novo worker; páginas com rascunhos não são recarregadas automaticamente.
 - Artes adicionais passam a cache sob demanda, limitado a 12 imagens; uma arte indisponível deixa de impedir instalação de toda a atualização. Arquivos essenciais continuam disponíveis offline.
 - Revisão 067. Não altera localStorage ou IndexedDB. Testes de recuperação e ciclo de atualização; comportamento final ainda requer confirmação no PWA do iPhone.
+
+## 0.9.0 — 2026-11-01
+
+- Widget calendário grande reorganizado verticalmente: faixa própria de arte/frase, mês completo e até três tarefas de hoje. A faixa é desenhada como uma imagem única para não perder a frase por compressão de colunas.
+- Envio manual inclui datas com tarefas, totais de hoje e até seis títulos/estados; não inclui notas, diário ou horários. Check de dia concluído usa o mesmo critério da Jornada, considerando todos os compromissos, mesmo além do limite visual.
+- Pontos em dias programados, checks em dias concluídos. Tarefas antigas não aparecem como atuais; arte indisponível gera orientação para carregar no Scriptable com internet.
+- Revisão 068, guia atualizado e compatibilidade com envios anteriores mantida. Testes de snapshot, privacidade e layout simulado; conferência visual no iPhone ainda necessária.
