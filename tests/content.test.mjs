@@ -10,3 +10,8 @@ test('pacote aura preserva autoria, referências e imagens disponíveis offline'
  for(const image of source.images){const installed=artworks.find(x=>x.id===image.id);assert.ok(installed);assert.ok(existsSync('public/'+installed.src.slice(2)));assert.ok(worker.includes(installed.src));}
  assert.equal(new Set(quotes.map(q=>q.text+'|'+q.credit)).size,quotes.length);
 });
+
+test('novos personagens estão instalados e disponíveis offline',()=>{
+ const catalog=JSON.parse(readFileSync('public/content/personagens-aura.json','utf8')),worker=readFileSync('public/sw.js','utf8');assert.equal(catalog.images.length,6);
+ for(const source of catalog.images){const art=artworks.find(a=>a.id===source.id);assert.ok(art,source.id);assert.equal(art.name,source.character);assert.ok(existsSync('public/'+art.src.slice(2)));assert.ok(worker.includes(art.src));}
+});

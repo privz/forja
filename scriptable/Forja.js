@@ -1,49 +1,66 @@
-// Instale no Scriptable com o nome exato: Forja
-// Não exige assinatura. Nenhum dado é enviado a um servidor.
-const fm = FileManager.local();
-const path = fm.joinPath(fm.documentsDirectory(), 'forja-widget-v1.json');
-let data = {version:1,challenges:[],updatedAt:null};
-try { if(fm.fileExists(path)) data=JSON.parse(fm.readString(path)); } catch (_) {}
+// Instale com o nome Forja. Gerado por build-scriptable.mjs.
+await (async()=>{
+// FORJA 0.7.0 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
+const ARTS=[{"id":"lee","name":"Rock Lee","src":"./assets/rock-lee.png"},{"id":"midoriya","name":"Midoriya","src":"./assets/midoriya.png"},{"id":"rock-lee-aura-05","name":"Rock Lee · Aura 1","src":"./assets/rock-lee-aura-05.png","alt":"Rock Lee concentra energia com os portões ativos e aura verde intensa sob chuva.","position":"46% 28.000000000000004%"},{"id":"rock-lee-aura-06","name":"Rock Lee · Aura 2","src":"./assets/rock-lee-aura-06.png","alt":"Rock Lee treina um soco com aura verde intensa e flocos caindo sobre o pátio molhado.","position":"53% 23%"},{"id":"might-guy-01","name":"Might Guy","src":"./assets/might-guy-01.png","alt":"Might Guy ativa os portões com aura verde sob chuva.","position":"50% 29%"},{"id":"naruto-01","name":"Naruto Uzumaki","src":"./assets/naruto-01.png","alt":"Naruto avança com chakra dourado e a silhueta da Kurama.","position":"62% 33%"},{"id":"minato-01","name":"Minato Namikaze","src":"./assets/minato-01.png","alt":"Minato concentra um Rasengan azul no pátio noturno.","position":"56% 22%"},{"id":"all-might-01","name":"All Might","src":"./assets/all-might-01.png","alt":"All Might desfere um soco com correntes de vento e luz.","position":"62% 23%"},{"id":"edward-elric-01","name":"Edward Elric","src":"./assets/edward-elric-01.png","alt":"Edward Elric inicia uma transmutação com energia azul.","position":"49% 20%"},{"id":"killua-01","name":"Killua Zoldyck","src":"./assets/killua-01.png","alt":"Killua avança envolto na eletricidade do Godspeed.","position":"61% 21%"}];
+const QUOTES=[{"text":"O esforço com certeza será recompensado.","credit":"Rock Lee · Naruto · Episódio 49 · tradução própria"},{"text":"Você é um gênio do esforço.","credit":"Might Guy · Naruto · Episódio 49 · tradução própria"},{"text":"É uma boa meta, pela qual vale a pena se esforçar.","credit":"Might Guy · Naruto · Episódio 49 · tradução própria"},{"text":"Você também pode se tornar um herói.","credit":"All Might · My Hero Academia · T1 E3 — Roaring Muscles, recapitulação · tradução própria"},{"text":"Este presente, você o conquistou com seus próprios esforços corajosos.","credit":"All Might · My Hero Academia · T1 E3 — Roaring Muscles; entrega do poder · tradução própria"},{"text":"Exagerar terá o efeito contrário!","credit":"All Might · My Hero Academia · T1 E3 — Roaring Muscles; 12:43 na transcrição legendada · tradução própria"},{"text":"Vou fazer o que posso agora!","credit":"Izuku Midoriya · My Hero Academia · T1 E6 — Rage, You Damn Nerd; 00:06 na transcrição · tradução própria"},{"text":"Preciso aprender logo a controlar meu poder.","credit":"Izuku Midoriya · My Hero Academia · T1 E6; 07:56 na transcrição · tradução própria"},{"text":"Precisei de muita ajuda. Mas minha vida mudou completamente.","credit":"Izuku Midoriya · My Hero Academia · T1 E4 — Start Line; narração após aprovação · tradução própria"},{"text":"Estou com medo, mas vou dar o meu melhor!","credit":"Grey · Black Clover · Episódio 49 — Beyond Limits; 16:52 na transcrição · tradução própria"},{"text":"Ainda deve haver algo que possamos fazer!","credit":"Noelle Silva · Black Clover · Episódio 49; 16:42 na transcrição · tradução própria"},{"text":"Sério... vocês foram bem.","credit":"Yami Sukehiro · Black Clover · Episódio 49; 19:20 na transcrição · tradução própria"},{"text":"Do meu ponto de vista, não desistir é a arma mais forte que tenho!","credit":"Asta · Black Clover · Episódio 48 — Despair vs. Hope; abertura · tradução própria"},{"text":"Vamos superar ainda mais os nossos limites!","credit":"Asta, Finral e Vanessa · Black Clover · Episódio 48; resposta coletiva indicada como ALL · tradução própria"},{"text":"Não acabou. Ainda não terminei.","credit":"Asta · Black Clover · Episódio 2 — The Boys' Promise; abertura · tradução própria"},{"text":"Você tem um jeito de tornar possível o impossível.","credit":"Yuno · Black Clover · Episódio 2; fala para Asta · tradução própria"},{"text":"Eu vou ser o Rei Mago.","credit":"Asta · Black Clover · Episódio 1 — Asta and Yuno; durante o treino · tradução própria"},{"text":"E o primeiro passo é treinar meu corpo!","credit":"Asta · Black Clover · Episódio 1; durante o treino · tradução própria"},{"text":"Podemos sonhar o quanto quisermos!","credit":"Asta · Black Clover · Episódio 3 — To the Royal Capital of the Clover Kingdom!; conversa com Nash · tradução própria"},{"text":"Estou seguindo meus sonhos.","credit":"Asta · Black Clover · Episódio 3; conversa com Nash · tradução própria"},{"text":"Tenho um objetivo muito maior.","credit":"Asta · Black Clover · Episódio 5 — The Path to the Wizard King; após duelo com Sekke · tradução própria"},{"text":"Aproveite os desvios pelo caminho. Ao máximo.","credit":"Ging Freecss · Hunter × Hunter (2011) · Episódio 148 — Past × and × Future; conversa com Gon · tradução própria"},{"text":"Estou aproveitando a jornada.","credit":"Ging Freecss · Hunter × Hunter (2011) · Episódio 148; conversa com Gon · tradução própria"},{"text":"As coisas importantes vieram antes daquilo que eu queria.","credit":"Ging Freecss · Hunter × Hunter (2011) · Episódio 148; relato da exploração do túmulo · tradução própria"},{"text":"Ande de cabeça erguida, Simon.","credit":"Kamina · Gurren Lagann · Episódio 1 — Bust Through the Heavens with Your Drill! · tradução própria"},{"text":"Acredite no Kamina que acredita em você!","credit":"Kamina · Gurren Lagann · Episódio 1; incentivo para Simon pilotar · tradução própria"},{"text":"Você precisa continuar crescendo.","credit":"Kyojuro Rengoku · Demon Slayer: Mugen Train · Filme (2020); 01:45:35 conforme a página do trecho · tradução própria"},{"text":"Só vou saber se tentar.","credit":"Izuku Midoriya · My Hero Academia · T1 E2 — What It Takes to Be a Hero · tradução própria"},{"text":"Por isso, vou me esforçar ainda mais de agora em diante.","credit":"Izuku Midoriya · My Hero Academia · T3 E1 — Game Start; conversa com Iida · tradução própria"},{"text":"Vou ser um herói, mas do tipo que quero ser.","credit":"Shoto Todoroki · My Hero Academia · T3 E1 — Game Start; recapitulação · tradução própria"},{"text":"Um perdedor vencendo um gênio pela força de vontade.","credit":"Rock Lee · Naruto, ep. 48 · tradução própria"},{"text":"Estou me esforçando todos os dias para me tornar um herói.","credit":"Midoriya · My Hero Academia, ep. 13.5 · tradução própria"},{"text":"O próximo passo é seu.","credit":"FORJA"},{"text":"Um passo de cada vez.","credit":"FORJA"}];
+// Pure functions shared by the PWA and the generated Scriptable script.
+function widgetWeek(date){const d=new Date(date);d.setDate(d.getDate()-((d.getDay()+6)%7));return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function validateWidget(data){
+ if(!data||![1,2].includes(data.version)||!Array.isArray(data.challenges)||data.challenges.length>6)throw Error('Dados incompatíveis. Atualize o script Forja.');
+ if(data.appUrl&&data.appUrl!=='https://privz.github.io/forja/')throw Error('Endereço do app inválido.');
+ if(typeof data.week!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(data.week)||typeof data.updatedAt!=='string'||!Number.isFinite(Date.parse(data.updatedAt)))throw Error('Data inválida.');
+ for(const c of data.challenges){const limit=c.period==='monthly'?31:7;if(typeof c.title!=='string'||c.title.length>70||!Number.isInteger(c.count)||c.count<0||c.count>limit||!Number.isInteger(c.target)||c.target<1||c.target>limit)throw Error('Desafio inválido.');if(c.period==='monthly'&&!/^\d{4}-(0[1-9]|1[0-2])$/.test(c.month||''))throw Error('Mês inválido.');}
+ if(data.inspiration){const i=data.inspiration;if(typeof i.text!=='string'||i.text.length>180||typeof i.credit!=='string'||i.credit.length>400||typeof i.art!=='string'||i.art.length>80||typeof i.fixed!=='boolean'||typeof i.twice!=='boolean')throw Error('Inspiração inválida.');}
+ return data;
+}
+function widgetChallenge(data,parameter='treino',now=new Date()){
+ const list=data.challenges||[],month=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+ const c=parameter==='mensal'?list.find(c=>c.period==='monthly'):parameter.startsWith('desafio:')?list.find(c=>c.id===parameter.slice(8)):(list.find(c=>c.period!=='monthly')||list[0]);
+ if(!c)return null;
+ const current=c.period==='monthly'?c.month===month:data.week===widgetWeek(now);
+ return {...c,current};
+}
+function widgetInspiration(data,quotes,arts,now=new Date()){
+ const i=data.inspiration||{},index=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/86400000),slot=index*(i.twice===false?1:2)+(i.twice!==false&&now.getHours()>=12?1:0);
+ return {quote:i.fixed&&i.text?{text:i.text,credit:i.credit}:quotes[slot%quotes.length],art:i.fixed?(arts.find(a=>a.id===i.art)||arts[0]):arts[index%arts.length]};
+}
+
+const APP='https://privz.github.io/forja/';
+const fm=FileManager.local(),path=fm.joinPath(fm.documentsDirectory(),'forja-widget-v1.json');
+let data={version:2,challenges:[],updatedAt:null};
+try{if(fm.fileExists(path))data=validateWidget(JSON.parse(fm.readString(path)));}catch(_){data={version:2,challenges:[],updatedAt:null};}
 const incoming=args.queryParameters.payload;
-if(incoming){
-  try {
-    const next=JSON.parse(incoming);
-    if(next.version!==1||!Array.isArray(next.challenges)||next.challenges.length>6)throw Error('Dados incompatíveis.');
-    for(const c of next.challenges){if(typeof c.title!=='string'||!Number.isInteger(c.count)||c.count<0||c.count>7||!Number.isInteger(c.target)||c.target<1||c.target>7)throw Error('Desafio inválido.');}
-    if(next.appUrl&&!/^https?:\/\//.test(next.appUrl))throw Error('Endereço inválido.');
-    data=next;fm.writeString(path,JSON.stringify(data));
-    const alert=new Alert();alert.title='FORJA';alert.message='Progresso recebido. O iPhone atualizará os widgets quando permitido.';alert.addAction('OK');await alert.presentAlert();
-  } catch(error) {const alert=new Alert();alert.title='Não foi possível importar';alert.message=String(error.message);alert.addAction('OK');await alert.presentAlert();}
-}
-const now=new Date();
-const quotes=['O próximo passo é seu.','Seu esforço de hoje constrói o amanhã.','Você pode recomeçar com uma pequena ação.','Continue no seu ritmo. O caminho é seu.','Faça hoje algo de que você vai se orgulhar.','Coragem também é tentar de novo.'];
-const index=(Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/86400000)*2+(now.getHours()>=12?1:0))%quotes.length;
-const widget=new ListWidget();
-const family=config.widgetFamily||'medium';
-const lock=family.startsWith('accessory');
-const textColor=lock?Color.dynamic(Color.black(),Color.white()):new Color('eef6ed');
-function line(text,size=13,bold=false){const t=widget.addText(text);t.font=bold?Font.boldSystemFont(size):Font.systemFont(size);t.textColor=textColor;return t;}
-if(data.appUrl)widget.url=data.appUrl;
-const next=new Date(now);next.setHours(now.getHours()<12?12:24,0,0,0);widget.refreshAfterDate=next;
-// Não reutiliza números da semana passada como se fossem atuais.
-function start(date){const d=new Date(date);d.setDate(d.getDate()-((d.getDay()+6)%7));return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-const current=data.week===start(now);
-const challenge=data.challenges[0];
-const parameter=String(args.widgetParameter||'frase').toLowerCase();
+if(incoming){try{const next=validateWidget(JSON.parse(incoming));fm.writeString(path,JSON.stringify(next));data=next;const a=new Alert();a.title='FORJA · Recebido';a.message='Progresso e inspiração salvos neste iPhone. O iOS determina quando atualizar os widgets.';a.addAction('OK');await a.presentAlert();}catch(e){const a=new Alert();a.title='Não foi possível receber';a.message=String(e.message);a.addAction('OK');await a.presentAlert();}}
+let family=config.widgetFamily||'medium';
+if(!config.runsInWidget&&!incoming){const a=new Alert();a.title='Prévia do FORJA';a.message='Escolha o widget para conferir.';['Inicial pequeno','Inicial médio','Inicial grande','Bloqueio · frase','Bloqueio · circular','Bloqueio · acima do relógio'].forEach(x=>a.addAction(x));a.addCancelAction('Cancelar');const n=await a.presentSheet();if(n<0){Script.complete();return;}family=['small','medium','large','accessoryRectangular','accessoryCircular','accessoryInline'][n];}
+const now=new Date(),parameter=String(args.widgetParameter||'frase').trim().toLowerCase();
+const inspiration=widgetInspiration(data,QUOTES,ARTS,now),challenge=widgetChallenge(data,parameter,now),lock=family.startsWith('accessory');
+const w=new ListWidget();w.url=APP;const next=new Date(now);next.setHours(now.getHours()<12&&data.inspiration?.twice!==false?12:24,0,0,0);w.refreshAfterDate=next;
+const ink=lock?Color.dynamic(Color.black(),Color.white()):new Color('fff5df');
+function line(parent,text,size=12,bold=false,limit=2){const t=parent.addText(text);t.font=bold?Font.boldSystemFont(size):Font.systemFont(size);t.textColor=ink;t.lineLimit=limit;t.minimumScaleFactor=.75;return t;}
+const current=challenge?.current,score=challenge&&current?`${challenge.count}/${challenge.target}`:'—';
+const period=challenge?.period==='monthly'?'no mês':'na semana';
+function symbol(parent,name,size){const image=parent.addImage(SFSymbol.named(name).image);image.imageSize=new Size(size,size);image.tintColor=ink;return image;}
 if(lock){
-  if(family==='accessoryCircular'){
-    const image=widget.addImage(SFSymbol.named('dumbbell.fill').image);image.imageSize=new Size(21,18);image.tintColor=textColor;image.centerAlignImage();
-    const t=line(challenge&&current?`${challenge.count}/${challenge.target}`:'—',15,true);t.centerAlignText();
-  }else if(parameter==='treino'){
-    line(challenge?challenge.title:'Seus desafios',12,true);
-    line(challenge&&current?`${challenge.count}/${challenge.target} nesta semana`:'Envie o progresso pelo app',12);
-  }else{line(quotes[index],family==='accessoryInline'?12:14,true);}
+ w.addAccessoryWidgetBackground=true;
+ if(family==='accessoryCircular'){w.setPadding(2,2,2,2);const im=symbol(w,challenge?.period==='monthly'?'trophy.fill':'dumbbell.fill',18);im.centerAlignImage();line(w,score,16,true,1).centerAlignText();}
+ else if(parameter==='frase'){if(family==='accessoryInline')line(w,inspiration.quote.text,12,true,1);else{line(w,inspiration.quote.text,13,true,3);line(w,inspiration.quote.credit.split(' · ')[0],9,false,1);}}
+ else{line(w,challenge?.title||'Seu compromisso',12,true,1);line(w,current?`${score} ${period}`:'Envie pelo FORJA',12,false,family==='accessoryInline'?1:2);}
 }else{
-  widget.backgroundGradient=(()=>{const g=new LinearGradient();g.colors=[new Color('163e2b'),new Color('0b1913')];g.locations=[0,1];return g;})();
-  widget.setPadding(16,16,16,16);line('FORJA /',12,true);widget.addSpacer(8);line(quotes[index],family==='small'?15:19,true);widget.addSpacer();
-  line(challenge&&current?`${challenge.title}: ${challenge.count}/${challenge.target}`:'Abra o app e envie seu progresso',12);
-  if(data.updatedAt){const d=new Date(data.updatedAt);line('Enviado em '+d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}),9);}
+ w.backgroundColor=new Color('10251b');w.setPadding(14,14,14,14);
+ // Public image cached locally; offline falls back to the green background.
+ try{const cache=fm.joinPath(fm.cacheDirectory(),'forja-'+inspiration.art.id+'.png');let image;if(fm.fileExists(cache))image=fm.readImage(cache);else{const request=new Request(APP+inspiration.art.src.replace('./',''));request.timeoutInterval=12;image=await request.loadImage();fm.writeImage(cache,image);}const ctx=new DrawContext();ctx.size=new Size(720,480);ctx.respectScreenScale=false;ctx.opaque=true;const scale=Math.max(720/image.size.width,480/image.size.height),width=image.size.width*scale,height=image.size.height*scale;ctx.drawImageInRect(image,new Rect((720-width)/2,Math.min(0,100-height*.27),width,height));ctx.setFillColor(new Color('05120c',.67));ctx.fillRect(new Rect(0,0,720,480));w.backgroundImage=ctx.getImage();}catch(_){}
+ line(w,'FORJA  /  SUA JORNADA',10,true,1);w.addSpacer(8);
+ line(w,inspiration.quote.text,family==='small'?15:20,true,family==='large'?5:3);
+ line(w,inspiration.quote.credit.split(' · ').slice(0,2).join(' · '),9,false,1);w.addSpacer();
+ const goals=family==='large'?(data.challenges||[]).slice(0,3):challenge?[challenge]:[];
+ for(const goal of goals){const c=widgetChallenge(data,'desafio:'+(goal.id||''),now)||challenge;if(!c)continue;line(w,c.title+' · '+(c.current?`${c.count}/${c.target}`:'Enviar progresso'),12,true,1);w.addSpacer(4);}
+ if(!goals.length)line(w,'Envie seu progresso pelo FORJA',11,false,2);
+ if(data.updatedAt){const d=new Date(data.updatedAt);line(w,'Último envio · '+d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}),8,false,1);}
 }
-Script.setWidget(widget);
-if(!config.runsInWidget&&!incoming)await widget.presentMedium();
+Script.setWidget(w);
+if(!config.runsInWidget&&!incoming){const methods={small:'presentSmall',medium:'presentMedium',large:'presentLarge',accessoryRectangular:'presentAccessoryRectangular',accessoryCircular:'presentAccessoryCircular',accessoryInline:'presentAccessoryInline'};await w[methods[family]||'presentMedium']();}
 Script.complete();
+
+})();

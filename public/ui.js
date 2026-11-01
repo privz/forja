@@ -1,4 +1,4 @@
-import {newArtworks,newQuotes} from './content.js?v=062';
+import {newArtworks,newQuotes,characterArtworks} from './content.js?v=063';
 export const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const paths={home:'M3 10 12 3l9 7v11h-6v-7H9v7H3Z',calendar:'M4 5h16v16H4ZM8 2v6m8-6v6M4 10h16m-12 4h2m4 0h2m-8 4h2',book:'M5 3h14v18H5ZM8 7h8m-8 4h8m-8 4h5',trophy:'M7 3h10v7a5 5 0 0 1-10 0ZM7 5H3v3a4 4 0 0 0 4 4m10-7h4v3a4 4 0 0 1-4 4m-5 3v6m-4 0h8',back:'m15 5-7 7 7 7',next:'m9 5 7 7-7 7',plus:'M12 4v16M4 12h16',check:'m5 12 4 4L19 6',settings:'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM9 3h6l1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1Z',image:'M3 3h18v18H3Zm0 14 6-6 5 5 3-3 4 4M15 7h2',quote:'M5 6h6v7H7v5H4v-5Zm10 0h6v7h-4v5h-3v-5Z',shuffle:'m3 5 4 0 10 14h4m-4-3 4 3-4 3M3 19h4l10-14h4m-4-3 4 3-4 3',gift:'M3 8h18v5H3Zm2 5v8h14v-8M12 8v13M12 8C4 8 5 0 10 4Zm0 0c8 0 7-8 2-4Z',clock:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 4v5l4 2',trash:'M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7',edit:'m4 16 12-12 4 4L8 20H4Zm9-9 4 4',dumbbell:'M3 8v8m3-11v14m12-14v14m3-11v8M6 12h12'};
 export function icon(name){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name]||paths.gift}"/></svg>`;}
@@ -9,7 +9,7 @@ export function navIcon(name){const marks={
  diario:'<path class="nav-solid" d="M10 8h19l-2 23H8l2-19H7a3 3 0 1 1 3-4Z"/><path class="nav-cut" d="M11 8v5H7m7 5h8m-8 5h6M8 31h20a3 3 0 0 0 3-3H12a3 3 0 0 1-4 3Z"/><path class="nav-accent" d="m28 6 7-3-3 10-8 8-2-2Z"/>',
  conquistas:'<path d="M11 32C0 23 5 12 8 9m21 23c11-9 6-20 3-23"/><path class="nav-accent" d="m20 6 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"/><path d="m7 14 4 3M5 21l6 2m-3 5 5 1m20-15-4 3m6 4-6 2m3 5-5 1m-13 6 6-4 6 4"/>'
 };return `<span class="nav-emblem"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${marks[name]}</svg></span>`;}
-export const artworks=[{id:'lee',name:'Rock Lee',src:'./assets/rock-lee.png'},{id:'midoriya',name:'Midoriya',src:'./assets/midoriya.png'},...newArtworks];
+export const artworks=[{id:'lee',name:'Rock Lee',src:'./assets/rock-lee.png'},{id:'midoriya',name:'Midoriya',src:'./assets/midoriya.png'},...newArtworks,...characterArtworks];
 const previousQuotes=[{text:'Um perdedor vencendo um gênio pela força de vontade.',credit:'Rock Lee · Naruto, ep. 48 · tradução própria'},{text:'Estou me esforçando todos os dias para me tornar um herói.',credit:'Midoriya · My Hero Academia, ep. 13.5 · tradução própria'},{text:'O próximo passo é seu.',credit:'FORJA'},{text:'Um passo de cada vez.',credit:'FORJA'}];
 
 export const quotes=[...new Map([...newQuotes,...previousQuotes].map(q=>[(q.text+"|"+(q.character||q.credit.split(" · ")[0])).normalize("NFKC").toLocaleLowerCase("pt-BR"),q])).values()];

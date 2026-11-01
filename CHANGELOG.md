@@ -104,3 +104,12 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Todas as falas disponíveis na personalização, com links para as fontes comunitárias fornecidas pelo pacote; não são apresentadas como dublagem brasileira ou verificação oficial.
 - Novas artes disponíveis para escolha e rotação diária. Contagem contínua de dias evita reiniciar a coleção na virada do mês.
 - Revisão offline 062; dados pessoais, fotos e preferências existentes preservados.
+
+## 0.7.0 — 2026-11-01
+
+- Seis artes do pacote personagens-aura: Might Guy, Naruto, Minato, All Might, Edward Elric e Killua; catálogo e pontos focais preservados.
+- Scriptable preparado para widgets pequeno/médio/grande na tela inicial e retangular/circular/em linha na tela bloqueada. Imagens públicas em cache; fallback verde sem rede.
+- Transferência manual v2: nomes/contadores semanais e mensais, frase, autoria e preferência de inspiração. Diário, agenda e fotos pessoais não são transferidos. Compatibilidade de leitura com payload v1.
+- Contadores de períodos antigos não são exibidos como atuais. Seleção treino/mensal por parâmetro; prévias escolhidas no Scriptable.
+- Guia público widgets.html com código copiável e instalação; geração reproduzível por node build-scriptable.mjs. Revisão offline 063, dados locais preservados.
+- Testes automatizados de protocolo e simulação das famílias Scriptable. Renderização e atualização no iPhone físico ainda precisam de validação.

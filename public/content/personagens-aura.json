@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "images": [
+    {
+      "id": "might-guy-01",
+      "prompt": "Create ONE final individual cinematic anime illustration for FORJA, portrait 2:3 1024x1536. Powerful disciplined exertion, intensely determined expression, expressive polished anime keyframe, anatomically correct hands and limbs. Nighttime solitary training/action, dark navy charcoal environment with cold rain or light snowflakes falling, BARE wet stone ground not covered in snow, cinematic shadows and powerful colored energy as main light. Character face and important hands upper half safely inset, darker quieter lower third for app overlay. No words, typography, logos, watermark, UI, border, other characters, blood or injuries. Might Guy from Naruto unmistakable bowl haircut, very thick eyebrows, adult face, green jumpsuit and shinobi vest, bandaged hands and orange leg warmers. Inner Gates active white eyes, forceful balanced martial arts stance, fists clenched near torso. ENORMOUS dense emerald chakra aura rising like turbulent flames and driving rain outward, wet empty forest training courtyard.",
+      "character": "Might Guy",
+      "file": "images/might-guy-01.png",
+      "alt": "Might Guy ativa os portões com aura verde sob chuva.",
+      "theme": "determinação",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.29
+      }
+    },
+    {
+      "id": "naruto-01",
+      "prompt": "Create ONE final individual cinematic anime illustration for FORJA, portrait 2:3 1024x1536. Powerful disciplined exertion, intensely determined expression, expressive polished anime keyframe, anatomically correct hands and limbs. Nighttime solitary training/action, dark navy charcoal environment with cold rain or light snowflakes falling, BARE wet stone ground not covered in snow, cinematic shadows and powerful colored energy as main light. Character face and important hands upper half safely inset, darker quieter lower third for app overlay. No words, typography, logos, watermark, UI, border, other characters, blood or injuries. Naruto Uzumaki unmistakable spiky blond hair, blue eyes and three whisker marks per cheek, orange black shinobi clothing and forehead protector. Kurama chakra mode, monumental golden-orange foxlike chakra cloak swirling around him, intense focused face, controlled forward punch with coherent fist, dark empty training ground in cold rain, fiery chakra reflections on wet stone, no readable symbols or text.",
+      "character": "Naruto Uzumaki",
+      "file": "images/naruto-01.png",
+      "alt": "Naruto avança com chakra dourado e a silhueta da Kurama.",
+      "theme": "determinação",
+      "focalPoint": {
+        "x": 0.62,
+        "y": 0.33
+      }
+    },
+    {
+      "id": "minato-01",
+      "prompt": "Create ONE final individual cinematic anime illustration for FORJA, portrait 2:3 1024x1536. Powerful disciplined exertion, intensely determined expression, expressive polished anime keyframe, anatomically correct hands and limbs. Nighttime solitary training/action, dark navy charcoal environment with cold rain or light snowflakes falling, BARE wet stone ground not covered in snow, cinematic shadows and powerful colored energy as main light. Character face and important hands upper half safely inset, darker quieter lower third for app overlay. No words, typography, logos, watermark, UI, border, other characters, blood or injuries. Minato Namikaze unmistakable spiky blond hair, adult blue-eyed face, green flak jacket over dark blue shinobi clothes and white cloak with red flame trim, cloak back has NO lettering. Dynamic precise forward stance holding a bright blue swirling Rasengan in one hand near chest, opposite hand balanced naturally. Huge blue spiraling energy currents around the Rasengan illuminating his determined face, cold rain, empty forest stone clearing at night, white cloak blowing in energy pressure.",
+      "character": "Minato Namikaze",
+      "file": "images/minato-01.png",
+      "alt": "Minato concentra um Rasengan azul no pátio noturno.",
+      "theme": "determinação",
+      "focalPoint": {
+        "x": 0.56,
+        "y": 0.22
+      }
+    },
+    {
+      "id": "all-might-01",
+      "prompt": "Create ONE final individual cinematic anime illustration for FORJA, portrait 2:3 1024x1536. Powerful disciplined exertion, intensely determined expression, expressive polished anime keyframe, anatomically correct hands and limbs. Nighttime solitary training/action, dark navy charcoal environment with cold rain or light snowflakes falling, BARE wet stone ground not covered in snow, cinematic shadows and powerful colored energy as main light. Character face and important hands upper half safely inset, darker quieter lower third for app overlay. No words, typography, logos, watermark, UI, border, other characters, blood or injuries. All Might from My Hero Academia unmistakable hugely muscular heroic form, blond hair with two tall swept-up tufts, angular face, classic red blue gold hero suit. Mighty controlled forward punch during solitary training, intense confident determined expression. Enormous white-blue wind pressure and luminous golden shockwave ribbons spiraling around his powerful silhouette, wet empty athletic stadium at night with light rain, correct fist anatomy, no opponent.",
+      "character": "All Might",
+      "file": "images/all-might-01.png",
+      "alt": "All Might desfere um soco com correntes de vento e luz.",
+      "theme": "determinação",
+      "focalPoint": {
+        "x": 0.62,
+        "y": 0.23
+      }
+    },
+    {
+      "id": "edward-elric-01",
+      "prompt": "Create ONE final individual cinematic anime illustration for FORJA, portrait 2:3 1024x1536. Powerful disciplined exertion, intensely determined expression, expressive polished anime keyframe, anatomically correct hands and limbs. Nighttime solitary training/action, dark navy charcoal environment with cold rain or light snowflakes falling, BARE wet stone ground not covered in snow, cinematic shadows and powerful colored energy as main light. Character face and important hands upper half safely inset, darker quieter lower third for app overlay. No words, typography, logos, watermark, UI, border, other characters, blood or injuries. Edward Elric from Fullmetal Alchemist unmistakable long blond braid, golden eyes, red coat over black clothing, exposed metal automail right arm. Focused fierce expression, clapping human left hand against automail right hand at upper chest to begin alchemy, clearly coherent hands. Enormous branching blue-white alchemical electricity surrounds his body and lights wet stone training courtyard, red coat billowing, cold rain at night. No written symbols, no magic circle lettering, no extra limbs.",
+      "character": "Edward Elric",
+      "file": "images/edward-elric-01.png",
+      "alt": "Edward Elric inicia uma transmutação com energia azul.",
+      "theme": "determinação",
+      "focalPoint": {
+        "x": 0.49,
+        "y": 0.2
+      }
+    },
+    {
+      "id": "killua-01",
+      "prompt": "Create ONE final individual cinematic anime illustration for FORJA, portrait 2:3 1024x1536. Powerful disciplined exertion, intensely determined expression, expressive polished anime keyframe, anatomically correct hands and limbs. Nighttime solitary training/action, dark navy charcoal environment with cold rain or light snowflakes falling, BARE wet stone ground not covered in snow, cinematic shadows and powerful colored energy as main light. Character face and important hands upper half safely inset, darker quieter lower third for app overlay. No words, typography, logos, watermark, UI, border, other characters, blood or injuries. Killua Zoldyck from Hunter x Hunter unmistakable spiky silver-white hair, blue eyes, white short-sleeved shirt over dark navy long sleeves, dark shorts. Godspeed electricity, intensely focused determined expression, athletic balanced forward motion, hands open naturally near torso. MASSIVE branching blue-white electrical aura wrapping body and tracing movement through falling fine snowflakes, dark empty woodland paved training clearing at night, bare wet ground, no injuries.",
+      "character": "Killua Zoldyck",
+      "file": "images/killua-01.png",
+      "alt": "Killua avança envolto na eletricidade do Godspeed.",
+      "theme": "determinação",
+      "focalPoint": {
+        "x": 0.61,
+        "y": 0.21
+      }
+    }
+  ],
+  "quotes": []
+}
