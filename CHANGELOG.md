@@ -113,3 +113,9 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Contadores de períodos antigos não são exibidos como atuais. Seleção treino/mensal por parâmetro; prévias escolhidas no Scriptable.
 - Guia público widgets.html com código copiável e instalação; geração reproduzível por node build-scriptable.mjs. Revisão offline 063, dados locais preservados.
 - Testes automatizados de protocolo e simulação das famílias Scriptable. Renderização e atualização no iPhone físico ainda precisam de validação.
+
+## 0.7.1 — 2026-11-01
+
+- Widgets da tela bloqueada sem fundo adaptativo, com cor explicitamente transparente; aplicado à frase, circular e texto em linha.
+- Guia explica como substituir o código mantendo nome, configuração dos widgets e progresso. Código instalável com revisão 064 para evitar cache antigo.
+- Teste de regressão verifica transparência nas três famílias de bloqueio. Aparência final ainda precisa ser conferida no iPhone.

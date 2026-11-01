@@ -1,4 +1,4 @@
-// FORJA 0.7.0 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// FORJA 0.7.1 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
 // Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
 /* BUNDLED_CONTENT */
 const APP='https://privz.github.io/forja/';
@@ -18,7 +18,8 @@ const current=challenge?.current,score=challenge&&current?`${challenge.count}/${
 const period=challenge?.period==='monthly'?'no mês':'na semana';
 function symbol(parent,name,size){const image=parent.addImage(SFSymbol.named(name).image);image.imageSize=new Size(size,size);image.tintColor=ink;return image;}
 if(lock){
- w.addAccessoryWidgetBackground=true;
+ w.addAccessoryWidgetBackground=false;
+ w.backgroundColor=new Color('000000',0);
  if(family==='accessoryCircular'){w.setPadding(2,2,2,2);const im=symbol(w,challenge?.period==='monthly'?'trophy.fill':'dumbbell.fill',18);im.centerAlignImage();line(w,score,16,true,1).centerAlignText();}
  else if(parameter==='frase'){if(family==='accessoryInline')line(w,inspiration.quote.text,12,true,1);else{line(w,inspiration.quote.text,13,true,3);line(w,inspiration.quote.credit.split(' · ')[0],9,false,1);}}
  else{line(w,challenge?.title||'Seu compromisso',12,true,1);line(w,current?`${score} ${period}`:'Envie pelo FORJA',12,false,family==='accessoryInline'?1:2);}
