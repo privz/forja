@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+backups/
+forja-backup-*.json
+*.log
+# Documentos de contexto pessoal ficam apenas no computador.
+PLANEJAMENTO.md
+GUIA-IPHONE.md
