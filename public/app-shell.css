@@ -3,3 +3,5 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;background:#0d151
 .calendar button.day-finished:after{content:"✓";position:absolute;right:3px;top:1px;font-size:11px;font-weight:700;color:#87e6ab}.calendar .day-check{font-size:0}
 
 .home-hero{background-position:var(--art-position,center)}.quote-options[open]{max-height:440px;overflow-y:auto;overscroll-behavior:contain}.quote-entry{padding-bottom:12px;border-bottom:1px solid #ffffff12}.quote-source{display:inline-flex;gap:5px;align-items:center;font-size:11px;color:#b9cbbd;margin:0 10px}.quote-source svg{width:13px;height:13px}.art-picker img{object-fit:cover}
+
+.diary-history-link{margin-bottom:16px}.diary-reading{padding:20px;margin-bottom:18px}.diary-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.85;font-size:15px}.diary-mood{color:var(--gold);font-size:12px;border-bottom:1px solid #ffffff14;padding-bottom:12px;margin-top:0;margin-bottom:18px}.diary-read-link{display:flex;align-items:center;gap:6px;color:var(--gold);font-size:12px;margin-top:12px}.diary-read-link svg{width:15px;height:15px}.entry{width:100%;text-align:left}.entry p{overflow-wrap:anywhere}

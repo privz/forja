@@ -164,3 +164,11 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Prévia oferece Calendário inicial médio e grande separadamente; versão e tamanho ficam identificáveis no calendário grande, para diagnosticar banner ausente no aparelho. Não declara resolvida a falha nativa ainda não reproduzida.
 - Removida tentativa webapp:// que falhou no iPhone do usuário; antigos parâmetros -app funcionam como aliases dos normais, abrindo navegador.
 - Guia atualizado, revisão 070. Próxima validação: comparar prévia grande no Scriptable com widget instalado e capturar imagem se o banner continuar ausente.
+
+## 0.9.3 — 2026-11-01
+
+- Diário tem tela de leitura completa e lista Meus registros com data, resumo e ação Ler registro. Ao salvar ou escolher uma anotação, abre o texto completo no topo da tela, em vez de apenas preencher o formulário fora da posição visível.
+- Edição explícita, navegação de volta aos registros e exclusão confirmada preservando tarefas e contadores do dia. Data do registro na rota permite reabrir após recarregar.
+- Mesmo armazenamento de anotações existentes; sem migração ou envio de conteúdo ao GitHub. Revisão offline 071.
+
+Validação desta versão: 35 testes automatizados passaram. No navegador local, uma anotação fictícia anterior e um texto longo com parágrafos foram lidos, reabertos após recarregar e devolvidos à edição. Nenhuma anotação pessoal foi acessada para os testes.

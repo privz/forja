@@ -1,4 +1,4 @@
-// FORJA 0.9.2 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// FORJA 0.9.3 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
 // Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
 /* BUNDLED_CONTENT */
 const APP='https://privz.github.io/forja/';
@@ -53,7 +53,7 @@ async function renderCalendar(){
   line(w,calendar.hasSnapshot?'Checks · envio '+updated:'Envie os checks pelo FORJA',8,false,1);return;
  }
  w.backgroundColor=new Color('10251b');w.setPadding(10,10,10,10);
- if(family==='large'){line(w,'FORJA 0.9.2 · CALENDÁRIO GRANDE',8,true,1);w.addSpacer(2);await calendarBanner(w,280,88);w.addSpacer(6);line(w,monthName.charAt(0).toUpperCase()+monthName.slice(1)+' '+calendar.year,12,true,1);w.addSpacer(2);monthGrid(w,calendar,280);w.addSpacer(6);calendarTasks(w,3);return;}
+ if(family==='large'){line(w,'FORJA 0.9.3 · CALENDÁRIO GRANDE',8,true,1);w.addSpacer(2);await calendarBanner(w,280,88);w.addSpacer(6);line(w,monthName.charAt(0).toUpperCase()+monthName.slice(1)+' '+calendar.year,12,true,1);w.addSpacer(2);monthGrid(w,calendar,280);w.addSpacer(6);calendarTasks(w,3);return;}
  if(family==='small'){line(w,monthName.toUpperCase()+' '+calendar.year,11,true,1);w.addSpacer(3);monthGrid(w,calendar,144);return;}
  const row=w.addStack();row.layoutHorizontally();row.centerAlignContent();const hero=row.addStack();hero.layoutVertically();hero.size=new Size(116,128);hero.cornerRadius=12;hero.setPadding(9,9,9,9);hero.backgroundColor=new Color('183526');
  try{const cache=fm.joinPath(fm.cacheDirectory(),'forja-'+inspiration.art.id+'.png');let image;if(fm.fileExists(cache))image=fm.readImage(cache);else{const request=new Request(APP+inspiration.art.src.replace('./',''));request.timeoutInterval=12;image=await request.loadImage();fm.writeImage(cache,image);}const ctx=new DrawContext();ctx.size=new Size(232,256);ctx.respectScreenScale=false;ctx.opaque=true;const scale=Math.max(232/image.size.width,256/image.size.height),width=image.size.width*scale,height=image.size.height*scale;ctx.drawImageInRect(image,new Rect((232-width)/2,Math.min(0,45-height*.25),width,height));ctx.setFillColor(new Color('05120c',.48));ctx.fillRect(new Rect(0,0,232,256));hero.backgroundImage=ctx.getImage();}catch(_){}
@@ -65,7 +65,7 @@ function monthGrid(parent,calendar,width){
  calendarRow(parent,['D','S','T','Q','Q','S','S'].map(label=>({label})),true,false,width);
  const cells=[...Array.from({length:calendar.offset},()=>({label:''})),...calendar.monthDays];while(cells.length%7)cells.push({label:''});
  for(let i=0;i<cells.length;i+=7)calendarRow(parent,cells.slice(i,i+7),false,false,width);
- parent.addSpacer(3);const stamp=data.updatedAt?new Date(data.updatedAt).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'}):'';line(parent,calendar.hasSnapshot?'v0.9.2 · envio '+stamp:'v0.9.2 · envie os checks',8,false,1);
+ parent.addSpacer(3);const stamp=data.updatedAt?new Date(data.updatedAt).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'}):'';line(parent,calendar.hasSnapshot?'v0.9.3 · envio '+stamp:'v0.9.3 · envie os checks',8,false,1);
 }
 function calendarRow(parent,cells,heading=false,accessory=false,width=145){
  // Draw the entire row at a fixed size: native horizontal stacks can squeeze
