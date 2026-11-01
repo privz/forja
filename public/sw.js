@@ -1,5 +1,20 @@
-const CACHE='forja-066';
-const FILES=['./','./index.html','./design-v4.css?v=066','./identity.css?v=066','./iphone.css?v=066','./app-shell.css?v=066','./app-v4.js?v=066','./core.js?v=066','./media.js?v=066','./ui.js?v=066','./content.js?v=066','./content/aura-frases.json','./assets/rock-lee-aura-05.png','./assets/rock-lee-aura-06.png','./widget-core.js?v=066','./Forja.js?v=066','./widgets.html','./content/personagens-aura.json','./assets/might-guy-01.png','./assets/naruto-01.png','./assets/minato-01.png','./assets/all-might-01.png','./assets/edward-elric-01.png','./assets/killua-01.png','./manifest.webmanifest','./assets/forja-icon-180.png','./assets/forja-icon-192.png','./assets/forja-icon-512.png','./assets/fonts/barlow-700.ttf','./assets/fonts/barlow-800.ttf','./assets/fonts/manrope-400.ttf','./assets/fonts/manrope-600.ttf','./assets/fonts/manrope-700.ttf','./assets/rock-lee.png','./assets/midoriya.png','./assets/midoriya-training.png','./assets/lee-training.png'];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('forja-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).catch(()=>caches.open(CACHE).then(c=>c.match('./index.html'))));return;}e.respondWith(caches.open(CACHE).then(async c=>(await c.match(e.request))||fetch(e.request)));});
+const CACHE='forja-067';
+const FILES=['./','./index.html','./design-v4.css?v=067','./identity.css?v=067','./iphone.css?v=067','./app-shell.css?v=067','./app-v4.js?v=067','./core.js?v=067','./media.js?v=067','./ui.js?v=067','./content.js?v=067','./content/aura-frases.json','./widget-core.js?v=067','./Forja.js?v=067','./widgets.html','./content/personagens-aura.json','./manifest.webmanifest','./assets/forja-icon-180.png','./assets/forja-icon-192.png','./assets/forja-icon-512.png','./assets/fonts/barlow-700.ttf','./assets/fonts/barlow-800.ttf','./assets/fonts/manrope-400.ttf','./assets/fonts/manrope-600.ttf','./assets/fonts/manrope-700.ttf','./assets/rock-lee.png','./assets/midoriya.png','./update.js?v=067'];
+// Optional public art downloads must not block installation of an update.
+const OPTIONAL=['./assets/rock-lee-aura-05.png','./assets/rock-lee-aura-06.png','./assets/might-guy-01.png','./assets/naruto-01.png','./assets/minato-01.png','./assets/all-might-01.png','./assets/edward-elric-01.png','./assets/killua-01.png','./assets/midoriya-training.png','./assets/lee-training.png'];
+const MEDIA='forja-public-media';
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(url=>new Request(url,{cache:'reload'})))).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil((async()=>{
+ await Promise.all((await caches.keys()).filter(k=>k.startsWith('forja-')&&k!==CACHE&&k!==MEDIA).map(k=>caches.delete(k)));
+ await self.clients.claim();
+ // Recover old app shells on screens whose records are saved immediately.
+ // Never interrupt diary, challenge editor, or an inspiration draft.
+ const scope=new URL(self.registration.scope);
+ for(const client of await self.clients.matchAll({type:'window'})){const url=new URL(client.url);if(url.origin!==scope.origin||![scope.pathname,scope.pathname+'index.html'].includes(url.pathname)||!['','#hoje','#conquistas','#configuracoes'].includes(url.hash)||url.searchParams.get('v')==='067')continue;url.searchParams.set('v','067');try{await client.navigate(url.href);}catch(_){}}
+})()));
+self.addEventListener('fetch',e=>{const url=new URL(e.request.url);if(e.request.method!=='GET'||url.origin!==self.location.origin)return;
+ if(url.pathname.endsWith('/version.json')){e.respondWith(fetch(e.request,{cache:'no-store'}));return;}
+ if(e.request.mode==='navigate'){e.respondWith(fetch(e.request,{cache:'no-store'}).catch(()=>caches.open(CACHE).then(c=>c.match('./index.html'))));return;}
+ e.respondWith((async()=>{const shell=await caches.open(CACHE),cached=await shell.match(e.request);if(cached)return cached;
+ if(/\/assets\/[^/]+\.(png|jpg|webp)$/.test(url.pathname)){const media=await caches.open(MEDIA),stored=await media.match(e.request);if(stored)return stored;const response=await fetch(e.request);if(response.ok){try{await media.put(e.request,response.clone());const keys=await media.keys();for(const key of keys.slice(0,Math.max(0,keys.length-12)))await media.delete(key);}catch(_){}}return response;}return fetch(e.request);})());
+});

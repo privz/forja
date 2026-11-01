@@ -138,3 +138,10 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Corrige corte do segundo dígito nos calendários: linhas desenhadas em largura fixa, sem compressão de texto por espaçadores horizontais.
 - Checks desenhados abaixo do dia, separados dos algarismos; fundo de bloqueio continua transparente.
 - Teste de regressão cobre 10 a 31 e semana com datas de dois dígitos; revisão offline 066. Aparência final requer conferência no iPhone.
+
+## 0.8.2 — 2026-11-01
+
+- Verificar atualização consulta a versão publicada sem cache e distingue versão atual, nova disponível e falha de rede; Atualizar agora recarrega com revisão explícita sem limpar dados.
+- Recuperação das versões antigas nas telas Hoje, Conquistas e Configurações ao ativar o novo worker; páginas com rascunhos não são recarregadas automaticamente.
+- Artes adicionais passam a cache sob demanda, limitado a 12 imagens; uma arte indisponível deixa de impedir instalação de toda a atualização. Arquivos essenciais continuam disponíveis offline.
+- Revisão 067. Não altera localStorage ou IndexedDB. Testes de recuperação e ciclo de atualização; comportamento final ainda requer confirmação no PWA do iPhone.

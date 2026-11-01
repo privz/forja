@@ -1,4 +1,4 @@
-// FORJA 0.8.1 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// FORJA 0.8.2 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
 // Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
 /* BUNDLED_CONTENT */
 const APP='https://privz.github.io/forja/';
