@@ -4,6 +4,15 @@ node_modules/
 backups/
 forja-backup-*.json
 *.log
+*.pem
+*.key
+*.p12
+.DS_Store
+Thumbs.db
+private/
+exports/
+local-data/
+forja-widget-v*.json
 # Documentos de contexto pessoal ficam apenas no computador.
 PLANEJAMENTO.md
 GUIA-IPHONE.md
