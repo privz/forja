@@ -1,4 +1,4 @@
-import {scheduled,dayComplete,localDate} from './core.js?v=069';
+import {scheduled,dayComplete,localDate} from './core.js?v=070';
 export function widgetSnapshot(state,now=new Date()){
  const today=localDate(now),first=new Date(now.getFullYear(),now.getMonth(),1),last=new Date(now.getFullYear(),now.getMonth()+1,0),monday=new Date(now);monday.setDate(now.getDate()-((now.getDay()+6)%7));const sunday=new Date(monday);sunday.setDate(monday.getDate()+6);
  const start=first<monday?first:monday,end=last>sunday?last:sunday,dates=[];for(const d=new Date(start);d<=end;d.setDate(d.getDate()+1))dates.push(localDate(d));

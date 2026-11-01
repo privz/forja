@@ -1,4 +1,4 @@
-// FORJA 0.9.1 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// FORJA 0.9.2 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
 // Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
 /* BUNDLED_CONTENT */
 const APP='https://privz.github.io/forja/';
@@ -8,7 +8,7 @@ try{if(fm.fileExists(path))data=validateWidget(JSON.parse(fm.readString(path)));
 const incoming=args.queryParameters.payload;
 if(incoming){try{const next=validateWidget(JSON.parse(incoming));fm.writeString(path,JSON.stringify(next));data=next;const a=new Alert();a.title='FORJA · Recebido';a.message='Progresso e inspiração salvos neste iPhone. O iOS determina quando atualizar os widgets.';a.addAction('OK');await a.presentAlert();}catch(e){const a=new Alert();a.title='Não foi possível receber';a.message=String(e.message);a.addAction('OK');await a.presentAlert();}}
 let family=config.widgetFamily||'medium',previewCalendar=false;
-if(!config.runsInWidget&&!incoming){const a=new Alert();a.title='Prévia do FORJA';a.message='Escolha o widget para conferir.';['Inicial pequeno','Inicial médio','Inicial grande','Bloqueio · frase','Bloqueio · circular','Bloqueio · acima do relógio','Calendário · inicial','Calendário · bloqueio'].forEach(x=>a.addAction(x));a.addCancelAction('Cancelar');const n=await a.presentSheet();if(n<0){Script.complete();return;}family=['small','medium','large','accessoryRectangular','accessoryCircular','accessoryInline','medium','accessoryRectangular'][n];previewCalendar=n>=6;}
+if(!config.runsInWidget&&!incoming){const a=new Alert();a.title='Prévia do FORJA';a.message='Escolha o widget para conferir.';['Inicial pequeno','Inicial médio','Inicial grande','Bloqueio · frase','Bloqueio · circular','Bloqueio · acima do relógio','Calendário · inicial médio','Calendário · inicial grande','Calendário · bloqueio'].forEach(x=>a.addAction(x));a.addCancelAction('Cancelar');const n=await a.presentSheet();if(n<0){Script.complete();return;}family=['small','medium','large','accessoryRectangular','accessoryCircular','accessoryInline','medium','large','accessoryRectangular'][n];previewCalendar=n>=6;}
 const now=new Date(),rawParameter=String(previewCalendar?'calendario':(args.widgetParameter||'frase')).trim().toLowerCase(),openInstalled=rawParameter.endsWith('-app'),parameter=openInstalled?rawParameter.slice(0,-4):rawParameter;
 const inspiration=widgetInspiration(data,QUOTES,ARTS,now),challenge=widgetChallenge(data,parameter,now),lock=family.startsWith('accessory');
 const w=new ListWidget();w.url=APP;const next=new Date(now);next.setHours(now.getHours()<12&&data.inspiration?.twice!==false?12:24,0,0,0);w.refreshAfterDate=next;
@@ -36,8 +36,7 @@ else if(lock){
  if(!goals.length)line(w,'Envie seu progresso pelo FORJA',11,false,2);
  if(data.updatedAt){const d=new Date(data.updatedAt);line(w,'Último envio · '+d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}),8,false,1);}
 }
-// Experimental iOS launch route; no private data or target path is passed.
-if(openInstalled)w.url='webapp://privz.github.io/forja/';
+// Legacy -app parameters remain aliases; unsupported launch scheme removed.
 Script.setWidget(w);
 if(!config.runsInWidget&&!incoming){const methods={small:'presentSmall',medium:'presentMedium',large:'presentLarge',accessoryRectangular:'presentAccessoryRectangular',accessoryCircular:'presentAccessoryCircular',accessoryInline:'presentAccessoryInline'};await w[methods[family]||'presentMedium']();}
 Script.complete();
@@ -54,7 +53,7 @@ async function renderCalendar(){
   line(w,calendar.hasSnapshot?'Checks · envio '+updated:'Envie os checks pelo FORJA',8,false,1);return;
  }
  w.backgroundColor=new Color('10251b');w.setPadding(10,10,10,10);
- if(family==='large'){await calendarBanner(w,280,88);w.addSpacer(6);line(w,monthName.charAt(0).toUpperCase()+monthName.slice(1)+' '+calendar.year,12,true,1);w.addSpacer(2);monthGrid(w,calendar,280);w.addSpacer(6);calendarTasks(w,3);return;}
+ if(family==='large'){line(w,'FORJA 0.9.2 · CALENDÁRIO GRANDE',8,true,1);w.addSpacer(2);await calendarBanner(w,280,88);w.addSpacer(6);line(w,monthName.charAt(0).toUpperCase()+monthName.slice(1)+' '+calendar.year,12,true,1);w.addSpacer(2);monthGrid(w,calendar,280);w.addSpacer(6);calendarTasks(w,3);return;}
  if(family==='small'){line(w,monthName.toUpperCase()+' '+calendar.year,11,true,1);w.addSpacer(3);monthGrid(w,calendar,144);return;}
  const row=w.addStack();row.layoutHorizontally();row.centerAlignContent();const hero=row.addStack();hero.layoutVertically();hero.size=new Size(116,128);hero.cornerRadius=12;hero.setPadding(9,9,9,9);hero.backgroundColor=new Color('183526');
  try{const cache=fm.joinPath(fm.cacheDirectory(),'forja-'+inspiration.art.id+'.png');let image;if(fm.fileExists(cache))image=fm.readImage(cache);else{const request=new Request(APP+inspiration.art.src.replace('./',''));request.timeoutInterval=12;image=await request.loadImage();fm.writeImage(cache,image);}const ctx=new DrawContext();ctx.size=new Size(232,256);ctx.respectScreenScale=false;ctx.opaque=true;const scale=Math.max(232/image.size.width,256/image.size.height),width=image.size.width*scale,height=image.size.height*scale;ctx.drawImageInRect(image,new Rect((232-width)/2,Math.min(0,45-height*.25),width,height));ctx.setFillColor(new Color('05120c',.48));ctx.fillRect(new Rect(0,0,232,256));hero.backgroundImage=ctx.getImage();}catch(_){}
@@ -66,7 +65,7 @@ function monthGrid(parent,calendar,width){
  calendarRow(parent,['D','S','T','Q','Q','S','S'].map(label=>({label})),true,false,width);
  const cells=[...Array.from({length:calendar.offset},()=>({label:''})),...calendar.monthDays];while(cells.length%7)cells.push({label:''});
  for(let i=0;i<cells.length;i+=7)calendarRow(parent,cells.slice(i,i+7),false,false,width);
- parent.addSpacer(3);const stamp=data.updatedAt?new Date(data.updatedAt).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'}):'';line(parent,calendar.hasSnapshot?'✓ · envio '+stamp:'Envie os checks',8,false,1);
+ parent.addSpacer(3);const stamp=data.updatedAt?new Date(data.updatedAt).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'}):'';line(parent,calendar.hasSnapshot?'v0.9.2 · envio '+stamp:'v0.9.2 · envie os checks',8,false,1);
 }
 function calendarRow(parent,cells,heading=false,accessory=false,width=145){
  // Draw the entire row at a fixed size: native horizontal stacks can squeeze

@@ -158,3 +158,9 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Opção experimental -app no parâmetro do widget (calendario-app, frase-app, treino-app, mensal-app) tenta abrir o FORJA instalado via webapp://, mantendo o modo sem sufixo como alternativa para navegador.
 - Guia oferece botão para testar no iPhone antes de configurar o widget. Compatibilidade e abertura da rota não são garantidas; a URL leva somente ao endereço público raiz, sem dados pessoais.
 - Revisão 069. Testes verificam destino opcional e preservação do calendário. Validação real no iPhone pendente.
+
+## 0.9.2 — 2026-11-01
+
+- Prévia oferece Calendário inicial médio e grande separadamente; versão e tamanho ficam identificáveis no calendário grande, para diagnosticar banner ausente no aparelho. Não declara resolvida a falha nativa ainda não reproduzida.
+- Removida tentativa webapp:// que falhou no iPhone do usuário; antigos parâmetros -app funcionam como aliases dos normais, abrindo navegador.
+- Guia atualizado, revisão 070. Próxima validação: comparar prévia grande no Scriptable com widget instalado e capturar imagem se o banner continuar ausente.

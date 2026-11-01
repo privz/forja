@@ -39,7 +39,7 @@ test('widget grande mostra até três tarefas e considera todas no contador',asy
  const sample={...payload,calendar:{completed:[],active:['2026-11-02'],today:{date:'2026-11-02',total:4,done:3,completed:false,items:[{title:'Treino de exemplo',done:true},{title:'Leitura de exemplo',done:true},{title:'Caminhada de exemplo',done:false},{title:'Outro compromisso',done:true}]}}};const r=await simulate('large',JSON.stringify(sample),'calendario','2026-11-02T12:00:00');assert.ok(r.texts.includes('Hoje · 3/4 concluídas'));assert.ok(r.texts.includes('✓ Treino de exemplo'));assert.ok(r.texts.includes('○ Caminhada de exemplo'));assert.ok(!r.texts.some(t=>t.includes('Outro compromisso')));assert.ok(r.texts.includes('+1 no FORJA · toque para abrir'));
 });
 
-test('abertura experimental no app preserva o modo calendário e não inclui dados na URL',async()=>{
- for(const family of ['medium','large','accessoryRectangular']){const r=await simulate(family,undefined,'calendario-app');assert.equal(r.rendered.url,'webapp://privz.github.io/forja/');assert.ok(r.texts.some(t=>t.includes('FORJA')||t.includes('envio')));}
- assert.equal((await simulate('medium',undefined,'frase-app')).rendered.url,'webapp://privz.github.io/forja/');assert.equal((await simulate('medium',undefined,'calendario')).rendered.url,'https://privz.github.io/forja/#jornada');
+test('sufixo experimental antigo não usa endereço inválido e preserva calendário',async()=>{
+ for(const family of ['medium','large','accessoryRectangular']){const r=await simulate(family,undefined,'calendario-app');assert.equal(r.rendered.url,'https://privz.github.io/forja/#jornada');assert.ok(r.texts.some(t=>t.includes('FORJA')||t.includes('envio')));}
+ assert.equal((await simulate('medium',undefined,'frase-app')).rendered.url,'https://privz.github.io/forja/');assert.equal((await simulate('medium',undefined,'calendario')).rendered.url,'https://privz.github.io/forja/#jornada');
 });
