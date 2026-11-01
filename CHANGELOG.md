@@ -97,3 +97,10 @@ Verificação: campos de diário e diálogo medidos dentro de seus contêineres 
 Verificação: 15 testes automatizados; criação e persistência de meta mensal, resgate, check de dia finalizado e edição nas duas etapas conferidos no navegador. Em altura reduzida de 480 px, ações ficaram no limite visível e formulário ganhou rolagem própria na tela de edição. O Safari nativo e a elasticidade física do iPhone ainda precisam ser confirmados no aparelho.
 - Ajuste de celebração: registros extras após atingir a meta não repetem a celebração de conclusão.
 - Revisão offline 061 identifica o pacote final desta atualização e evita reusar o JavaScript anterior.
+
+## 0.6.1 — 2026-11-01
+
+- Integração do pacote aura-frases: duas novas artes do Rock Lee e 30 falas com autoria, obra, referência e tradução própria. Metadados originais preservados no catálogo público.
+- Todas as falas disponíveis na personalização, com links para as fontes comunitárias fornecidas pelo pacote; não são apresentadas como dublagem brasileira ou verificação oficial.
+- Novas artes disponíveis para escolha e rotação diária. Contagem contínua de dias evita reiniciar a coleção na virada do mês.
+- Revisão offline 062; dados pessoais, fotos e preferências existentes preservados.
