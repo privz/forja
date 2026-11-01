@@ -1,6 +1,6 @@
-import {initialState,validateState,localDate,weekStart,progress,periodKey,scheduled,dayComplete} from './core.js?v=060';
-import {importPhoto,getPhoto,media} from './media.js?v=060';
-import {esc,icon,navIcon,artworks,quotes} from './ui.js?v=060';
+import {initialState,validateState,localDate,weekStart,progress,periodKey,scheduled,dayComplete} from './core.js?v=061';
+import {importPhoto,getPhoto,media} from './media.js?v=061';
+import {esc,icon,navIcon,artworks,quotes} from './ui.js?v=061';
 const $=s=>document.querySelector(s),KEY='forja-v1';let state,bad=false;
 document.querySelectorAll('nav a').forEach((a,i)=>{a.innerHTML=navIcon(['hoje','jornada','diario','conquistas'][i])+`<span class="nav-label">${['Hoje','Jornada','Diário','Conquistas'][i]}</span>`;});
 try{state=validateState(JSON.parse(localStorage.getItem(KEY))||initialState());}catch{state=initialState();bad=true;}

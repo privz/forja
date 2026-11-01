@@ -96,3 +96,4 @@ Verificação: campos de diário e diálogo medidos dentro de seus contêineres 
 
 Verificação: 15 testes automatizados; criação e persistência de meta mensal, resgate, check de dia finalizado e edição nas duas etapas conferidos no navegador. Em altura reduzida de 480 px, ações ficaram no limite visível e formulário ganhou rolagem própria na tela de edição. O Safari nativo e a elasticidade física do iPhone ainda precisam ser confirmados no aparelho.
 - Ajuste de celebração: registros extras após atingir a meta não repetem a celebração de conclusão.
+- Revisão offline 061 identifica o pacote final desta atualização e evita reusar o JavaScript anterior.
