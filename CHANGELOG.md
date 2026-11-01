@@ -55,3 +55,9 @@ Validação inicial: registro e diário persistiram após recarregar no navegado
 - Versão visível em Configurações. Falha ao ler registros antigos não permite sobrescrevê-los silenciosamente.
 
 Verificação: personalização salva, registros anteriores presentes e navegação entre resumo e detalhes conferidas em navegador a 390 e 320 pixels. Instalação e widgets no iPhone continuam dependendo de teste no aparelho. Feriados e coleção de 31 artes continuam pendentes; duas artes estão disponíveis.
+
+## 0.4.1 — 2026-11-01
+
+- Página isolada de demonstração em `previews/movimento.html`, com reprodução manual de três animações, botão repetir e estado de execução visível.
+- Controle explícito de movimento, respeitando inicialmente a preferência de movimento reduzido. Não acessa registros ou dados do app.
+- Conceito provisório de punho utilizado somente na demonstração. Ícone principal do aplicativo preservado.
