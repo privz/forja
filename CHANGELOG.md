@@ -119,3 +119,8 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Widgets da tela bloqueada sem fundo adaptativo, com cor explicitamente transparente; aplicado à frase, circular e texto em linha.
 - Guia explica como substituir o código mantendo nome, configuração dos widgets e progresso. Código instalável com revisão 064 para evitar cache antigo.
 - Teste de regressão verifica transparência nas três famílias de bloqueio. Aparência final ainda precisa ser conferida no iPhone.
+
+## Prévias de calendário — 2026-11-01
+
+- Estudo visual em previews/calendario-widgets.html: widget horizontal do mês na tela inicial e semana compacta transparente no bloqueio, com troca de arte e simulação de dia concluído.
+- Dados fictícios, sem acesso aos registros pessoais. Calendário ainda não implementado no script; proposta de integração futura usa envio manual dos checks do FORJA, sem Calendário da Apple.
