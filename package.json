@@ -1,1 +1,1 @@
-{"name":"forja","version":"0.1.0","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node --test tests/*.test.mjs","check":"node --check public/app.js && node --check public/core.js && node --check public/sw.js"}}
+{"name":"forja","version":"0.4.0","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node --test tests/*.test.mjs","check":"node --check public/app-v4.js && node --check public/media.js && node --check public/ui.js && node --check public/core.js && node --check public/sw.js"}}

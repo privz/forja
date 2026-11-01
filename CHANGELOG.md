@@ -43,3 +43,15 @@ Validação inicial: registro e diário persistiram após recarregar no navegado
 - Duas falas curtas com personagem, episódio e indicação de tradução própria nas configurações.
 - Fontes dos trechos: Naruto episódio 48 (transcrição em https://transcripts.foreverdreaming.org/viewtopic.php?t=76298) e My Hero Academia episódio 13.5 (https://subs.yakuaru.com/books/my-hero-academia/page/e135-hero-notebook/edit?editor=markdown-clean).
 - Imagem Midoriya criada com image_gen integrado, prompt: personagem em treino no terraço ao nascer do sol, visual anime cinematográfico verde e dourado, sem texto.
+
+## 0.4.0 — 2026-11-01
+
+- Interface reconstruída a partir da referência visual: cabeçalhos ilustrados, superfícies escuras, ações douradas e tipografia editorial.
+- Jornada compacta com calendário e resumo; detalhes do dia separados em tela própria, com compromissos, tarefas e nota.
+- Personalização em tela própria com prévia, miniaturas, troca de frase e controles de fixar/alternar inspiração.
+- Navegação com ícones vetoriais consistentes, novos cartões de recompensa e celebração com confirmação visual.
+- Camada de imagens locais e backups preservada. Chave dos registros e banco de fotos mantidos para compatibilidade.
+- Atualização de arquivos versionada e cache offline consistente para evitar mistura entre interfaces antigas e novas. A primeira atualização ainda exige recarregar/reabrir a aba antiga.
+- Versão visível em Configurações. Falha ao ler registros antigos não permite sobrescrevê-los silenciosamente.
+
+Verificação: personalização salva, registros anteriores presentes e navegação entre resumo e detalhes conferidas em navegador a 390 e 320 pixels. Instalação e widgets no iPhone continuam dependendo de teste no aparelho. Feriados e coleção de 31 artes continuam pendentes; duas artes estão disponíveis.
