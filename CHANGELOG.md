@@ -124,3 +124,11 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 
 - Estudo visual em previews/calendario-widgets.html: widget horizontal do mês na tela inicial e semana compacta transparente no bloqueio, com troca de arte e simulação de dia concluído.
 - Dados fictícios, sem acesso aos registros pessoais. Calendário ainda não implementado no script; proposta de integração futura usa envio manual dos checks do FORJA, sem Calendário da Apple.
+
+## 0.8.0 — 2026-11-01
+
+- Widget calendario (sem acento no parâmetro): personagem, frase e mês completo no médio; semana compacta transparente no retangular de bloqueio. Pequeno/grande e formatos circular/em linha têm versões adaptadas de data/calendário.
+- Dia atual destacado; checks vêm das datas concluídas do FORJA, transferidas manualmente com os contadores. O envio abrange o mês e a semana atual, sem diário, notas ou nomes de compromissos. Não lê o Calendário da Apple.
+- Calendário acompanha a data do aparelho; checks permanecem os do último envio, identificado no widget. Na virada do mês, envie novamente para preencher os novos checks. Tocar abre Jornada; células não são interativas.
+- Prévia no Scriptable oferece calendário inicial/bloqueio. Guia público atualizado, revisão offline 065, leitura dos envios anteriores preservada.
+- Testes de datas, limites do envio e simulação das famílias. Renderização real e recortes ainda precisam de conferência no iPhone.
