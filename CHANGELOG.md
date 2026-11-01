@@ -81,3 +81,17 @@ Logo: criada com ferramenta integrada image_gen usando a direção Anime da comp
 - Confirmação visual breve no registro diário e celebração completa reservada à meta concluída.
 
 Verificação: campos de diário e diálogo medidos dentro de seus contêineres em viewport móvel de 390 px e em espaço reduzido de 320 × 480. Conferência no navegador de desktop; Safari/PWA e teclado físico do iPhone ainda exigem confirmação no aparelho.
+
+## 0.6.0 — 2026-11-01
+
+- Estrutura com uma área principal de rolagem; documento externo bloqueado e overscroll contido para reduzir o fundo vazio ao puxar os limites no iPhone.
+- Editor de desafios em tela própria, em duas etapas (compromisso e recompensa), com ações fixas, sem abrir teclado automaticamente. Exclusão destacada em vermelho e também acessível na etapa da recompensa.
+- Desafios semanais ou mensais, escolha de dias da semana, mês e meta própria. Registros extras fora dos dias planejados contam para a meta.
+- Jornada mostra tarefas dos dias programados e permite concluir compromissos com horário. Check de dia concluído exige todos os itens previstos; dias vazios não recebem conclusão automática.
+- Hoje volta a um símbolo vetorial monocromático de punho, no mesmo padrão dos demais ícones.
+- Seleção e menus de toque longo desativados na interface, preservando seleção/edição nos campos.
+- Transições curtas entre seções, resposta ao toque e luz ambiente discreta nas artes em modo de movimento completo; opção de movimento reduzido preservada.
+- Cabeçalhos de Jornada e Conquistas usam novas artes de treino de Midoriya e Rock Lee, provenientes da primeira rodada do pacote de conteúdo. São ilustrações, não vídeos de personagens.
+- Protocolo atual do widget continua semanal; metas mensais ficam no aplicativo.
+
+Verificação: 15 testes automatizados; criação e persistência de meta mensal, resgate, check de dia finalizado e edição nas duas etapas conferidos no navegador. Em altura reduzida de 480 px, ações ficaram no limite visível e formulário ganhou rolagem própria na tela de edição. O Safari nativo e a elasticidade física do iPhone ainda precisam ser confirmados no aparelho.
