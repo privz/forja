@@ -1,4 +1,4 @@
-// FORJA 0.8.0 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// FORJA 0.8.1 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
 // Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
 /* BUNDLED_CONTENT */
 const APP='https://privz.github.io/forja/';
@@ -66,9 +66,16 @@ function monthGrid(parent,calendar,width){
  parent.addSpacer(3);const stamp=data.updatedAt?new Date(data.updatedAt).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'}):'';line(parent,calendar.hasSnapshot?'✓ · envio '+stamp:'Envie os checks',8,false,1);
 }
 function calendarRow(parent,cells,heading=false,accessory=false,width=145){
- const row=parent.addStack();row.layoutHorizontally();
- for(const day of cells){const cell=row.addStack();cell.size=new Size(width/7,accessory?(heading?11:19):(heading?12:14));cell.centerAlignContent();cell.cornerRadius=accessory?9:7;
-  if(day.today)cell.backgroundColor=accessory?ink:new Color('f3cb75');cell.addSpacer();
-  const t=line(cell,day.label??(String(day.day)+(day.completed?(accessory?'·':'✓'):'')),heading?7:(accessory?10:9),!!day.today,1);if(day.today)t.textColor=accessory?Color.dynamic(Color.white(),Color.black()):new Color('10251b');else if(day.completed&&!accessory)t.textColor=new Color('83dfad');cell.addSpacer();
- }
+ // Draw the entire row at a fixed size: native horizontal stacks can squeeze
+ // two-digit labels between flexible spacers and truncate their second glyph.
+ const height=heading?11:(accessory?20:15),column=width/7,fontSize=heading?7:(accessory?10:9);
+ const ctx=new DrawContext();ctx.size=new Size(width,height);ctx.respectScreenScale=true;ctx.opaque=false;ctx.setTextAlignedCenter();
+ cells.forEach((day,index)=>{const x=index*column,center=x+column/2;
+  if(day.today){ctx.setFillColor(accessory?ink:new Color('f3cb75'));const diameter=accessory?16:13;ctx.fillEllipse(new Rect(center-diameter/2,0,diameter,diameter));}
+  ctx.setFont(day.today?Font.boldSystemFont(fontSize):Font.systemFont(fontSize));
+  const color=day.today?(accessory?Color.dynamic(Color.white(),Color.black()):new Color('10251b')):day.completed&&!accessory?new Color('83dfad'):ink;
+  ctx.setTextColor(color);ctx.drawTextInRect(day.label??String(day.day),new Rect(x,0,column,heading?11:(accessory?15:12)));
+  if(day.completed&&!heading){ctx.setStrokeColor(accessory?ink:new Color('83dfad'));ctx.setLineWidth(.8);const tick=new Path(),y=accessory?17:12;tick.move(new Point(center-2,y));tick.addLine(new Point(center-.5,y+1.5));tick.addLine(new Point(center+2.5,y-1.5));ctx.addPath(tick);ctx.strokePath();}
+ });
+ const image=parent.addImage(ctx.getImage());image.imageSize=new Size(width,height);image.leftAlignImage();
 }

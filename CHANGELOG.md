@@ -132,3 +132,9 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Calendário acompanha a data do aparelho; checks permanecem os do último envio, identificado no widget. Na virada do mês, envie novamente para preencher os novos checks. Tocar abre Jornada; células não são interativas.
 - Prévia no Scriptable oferece calendário inicial/bloqueio. Guia público atualizado, revisão offline 065, leitura dos envios anteriores preservada.
 - Testes de datas, limites do envio e simulação das famílias. Renderização real e recortes ainda precisam de conferência no iPhone.
+
+## 0.8.1 — 2026-11-01
+
+- Corrige corte do segundo dígito nos calendários: linhas desenhadas em largura fixa, sem compressão de texto por espaçadores horizontais.
+- Checks desenhados abaixo do dia, separados dos algarismos; fundo de bloqueio continua transparente.
+- Teste de regressão cobre 10 a 31 e semana com datas de dois dígitos; revisão offline 066. Aparência final requer conferência no iPhone.
