@@ -152,3 +152,9 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Envio manual inclui datas com tarefas, totais de hoje e até seis títulos/estados; não inclui notas, diário ou horários. Check de dia concluído usa o mesmo critério da Jornada, considerando todos os compromissos, mesmo além do limite visual.
 - Pontos em dias programados, checks em dias concluídos. Tarefas antigas não aparecem como atuais; arte indisponível gera orientação para carregar no Scriptable com internet.
 - Revisão 068, guia atualizado e compatibilidade com envios anteriores mantida. Testes de snapshot, privacidade e layout simulado; conferência visual no iPhone ainda necessária.
+
+## 0.9.1 — 2026-11-01
+
+- Opção experimental -app no parâmetro do widget (calendario-app, frase-app, treino-app, mensal-app) tenta abrir o FORJA instalado via webapp://, mantendo o modo sem sufixo como alternativa para navegador.
+- Guia oferece botão para testar no iPhone antes de configurar o widget. Compatibilidade e abertura da rota não são garantidas; a URL leva somente ao endereço público raiz, sem dados pessoais.
+- Revisão 069. Testes verificam destino opcional e preservação do calendário. Validação real no iPhone pendente.

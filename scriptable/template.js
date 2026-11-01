@@ -1,4 +1,4 @@
-// FORJA 0.9.0 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
+// FORJA 0.9.1 — Cole este arquivo inteiro no Scriptable e nomeie Forja.
 // Progresso local. A rede baixa somente uma arte pública, sem enviar registros.
 /* BUNDLED_CONTENT */
 const APP='https://privz.github.io/forja/';
@@ -9,7 +9,7 @@ const incoming=args.queryParameters.payload;
 if(incoming){try{const next=validateWidget(JSON.parse(incoming));fm.writeString(path,JSON.stringify(next));data=next;const a=new Alert();a.title='FORJA · Recebido';a.message='Progresso e inspiração salvos neste iPhone. O iOS determina quando atualizar os widgets.';a.addAction('OK');await a.presentAlert();}catch(e){const a=new Alert();a.title='Não foi possível receber';a.message=String(e.message);a.addAction('OK');await a.presentAlert();}}
 let family=config.widgetFamily||'medium',previewCalendar=false;
 if(!config.runsInWidget&&!incoming){const a=new Alert();a.title='Prévia do FORJA';a.message='Escolha o widget para conferir.';['Inicial pequeno','Inicial médio','Inicial grande','Bloqueio · frase','Bloqueio · circular','Bloqueio · acima do relógio','Calendário · inicial','Calendário · bloqueio'].forEach(x=>a.addAction(x));a.addCancelAction('Cancelar');const n=await a.presentSheet();if(n<0){Script.complete();return;}family=['small','medium','large','accessoryRectangular','accessoryCircular','accessoryInline','medium','accessoryRectangular'][n];previewCalendar=n>=6;}
-const now=new Date(),parameter=String(previewCalendar?'calendario':(args.widgetParameter||'frase')).trim().toLowerCase();
+const now=new Date(),rawParameter=String(previewCalendar?'calendario':(args.widgetParameter||'frase')).trim().toLowerCase(),openInstalled=rawParameter.endsWith('-app'),parameter=openInstalled?rawParameter.slice(0,-4):rawParameter;
 const inspiration=widgetInspiration(data,QUOTES,ARTS,now),challenge=widgetChallenge(data,parameter,now),lock=family.startsWith('accessory');
 const w=new ListWidget();w.url=APP;const next=new Date(now);next.setHours(now.getHours()<12&&data.inspiration?.twice!==false?12:24,0,0,0);w.refreshAfterDate=next;
 const ink=lock?Color.dynamic(Color.black(),Color.white()):new Color('fff5df');
@@ -36,6 +36,8 @@ else if(lock){
  if(!goals.length)line(w,'Envie seu progresso pelo FORJA',11,false,2);
  if(data.updatedAt){const d=new Date(data.updatedAt);line(w,'Último envio · '+d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}),8,false,1);}
 }
+// Experimental iOS launch route; no private data or target path is passed.
+if(openInstalled)w.url='webapp://privz.github.io/forja/';
 Script.setWidget(w);
 if(!config.runsInWidget&&!incoming){const methods={small:'presentSmall',medium:'presentMedium',large:'presentLarge',accessoryRectangular:'presentAccessoryRectangular',accessoryCircular:'presentAccessoryCircular',accessoryInline:'presentAccessoryInline'};await w[methods[family]||'presentMedium']();}
 Script.complete();
