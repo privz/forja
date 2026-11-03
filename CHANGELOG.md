@@ -179,3 +179,5 @@ Validação desta versão: 35 testes automatizados passaram. No navegador local,
 - Dados compartilhados via App Groups com diagnóstico explícito caso a assinatura não permita o grupo. Nenhuma migração de registros do PWA.
 - Workflow macOS gera IPA sem assinatura com app + extensão e testes do progresso. Instalação e renovação gratuita dependem de teste real via SideStore/AltStore, não garantidas pela compilação.
 - Documentação de renovação semanal, limites, privacidade e distinção de distribuição pela App Store. FORJA web sem alteração de versão ou comportamento.
+
+Ajuste de compilação do protótipo: desativada a exigência automática de catálogo AppIcon ausente; este teste inicial pode usar ícone genérico. Não altera os ícones do FORJA web.
