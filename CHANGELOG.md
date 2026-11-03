@@ -181,3 +181,5 @@ Validação desta versão: 35 testes automatizados passaram. No navegador local,
 - Documentação de renovação semanal, limites, privacidade e distinção de distribuição pela App Store. FORJA web sem alteração de versão ou comportamento.
 
 Ajuste de compilação do protótipo: desativada a exigência automática de catálogo AppIcon ausente; este teste inicial pode usar ícone genérico. Não altera os ícones do FORJA web.
+
+Validação nativa: compilação iPhone arm64 de app + extensão e testes Swift passaram no workflow https://github.com/privz/forja/actions/runs/41632370998. IPA sem assinatura gerado e conferido com executáveis de app/widget, sem perfis de provisionamento. Instalação, App Groups, renovação e notificações no iPhone continuam pendentes.
