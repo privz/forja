@@ -172,3 +172,10 @@ Verificação: 15 testes automatizados; criação e persistência de meta mensal
 - Mesmo armazenamento de anotações existentes; sem migração ou envio de conteúdo ao GitHub. Revisão offline 071.
 
 Validação desta versão: 35 testes automatizados passaram. No navegador local, uma anotação fictícia anterior e um texto longo com parágrafos foram lidos, reabertos após recarregar e devolvidos à edição. Nenhuma anotação pessoal foi acessada para os testes.
+
+## Protótipo nativo Forja Lab — 2026-11-03
+
+- Projeto separado SwiftUI/WidgetKit: frase e compromisso de teste, widget inicial/bloqueado com abertura do próprio app e lembrete local opcional.
+- Dados compartilhados via App Groups com diagnóstico explícito caso a assinatura não permita o grupo. Nenhuma migração de registros do PWA.
+- Workflow macOS gera IPA sem assinatura com app + extensão e testes do progresso. Instalação e renovação gratuita dependem de teste real via SideStore/AltStore, não garantidas pela compilação.
+- Documentação de renovação semanal, limites, privacidade e distinção de distribuição pela App Store. FORJA web sem alteração de versão ou comportamento.

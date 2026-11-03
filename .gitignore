@@ -18,3 +18,17 @@ PLANEJAMENTO.md
 GUIA-IPHONE.md
 work-*-previous.txt
 PROMPT-CONTEUDO.md
+# Local native build products and signing files
+native/**/build/
+native/**/output/
+native/**/*.xcodeproj/
+native/**/Info.plist
+native/**/*.entitlements
+*.ipa
+*.mobileprovision
+*.p8
+*.pfx
+*.cer
+*.p12
+*pairing*.plist
+*pairing*.mobiledevicepairing

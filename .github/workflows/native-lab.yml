@@ -1,0 +1,47 @@
+name: Build Forja Lab iPhone prototype
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'native/ForjaLab/**'
+      - '.github/workflows/native-lab.yml'
+permissions:
+  contents: read
+concurrency:
+  group: forja-native-lab
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install project generator
+        run: brew install xcodegen
+      - name: Test native progress rules
+        working-directory: native/ForjaLab
+        run: |
+          swiftc Shared/LabState.swift Tests/ProgressChecks.swift -o /tmp/forja-progress-checks
+          TZ=Asia/Tokyo /tmp/forja-progress-checks
+      - name: Generate Xcode project
+        working-directory: native/ForjaLab
+        run: xcodegen generate
+      - name: Build unsigned app and widget
+        working-directory: native/ForjaLab
+        run: |
+          xcodebuild -project ForjaLab.xcodeproj -scheme ForjaLab -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+      - name: Package unsigned IPA
+        working-directory: native/ForjaLab
+        run: |
+          mkdir -p output/Payload
+          cp -R build/Build/Products/Release-iphoneos/ForjaLab.app output/Payload/
+          test -d output/Payload/ForjaLab.app/PlugIns/ForjaLabWidget.appex
+          cd output
+          zip -q -r ForjaLab-unsigned.ipa Payload -x '*.DS_Store'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ForjaLab-unsigned-ipa
+          path: native/ForjaLab/output/ForjaLab-unsigned.ipa
+          retention-days: 1
+          if-no-files-found: error
