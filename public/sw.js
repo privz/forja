@@ -1,5 +1,5 @@
-const CACHE='forja-071';
-const FILES=['./','./index.html','./design-v4.css?v=071','./identity.css?v=071','./iphone.css?v=071','./app-shell.css?v=071','./app-v4.js?v=071','./core.js?v=071','./media.js?v=071','./ui.js?v=071','./content.js?v=071','./content/aura-frases.json','./widget-core.js?v=071','./Forja.js?v=071','./widgets.html','./content/personagens-aura.json','./manifest.webmanifest','./assets/forja-icon-180.png','./assets/forja-icon-192.png','./assets/forja-icon-512.png','./assets/fonts/barlow-700.ttf','./assets/fonts/barlow-800.ttf','./assets/fonts/manrope-400.ttf','./assets/fonts/manrope-600.ttf','./assets/fonts/manrope-700.ttf','./assets/rock-lee.png','./assets/midoriya.png','./update.js?v=071','./widget-snapshot.js?v=071'];
+const CACHE='forja-072';
+const FILES=['./','./index.html','./design-v4.css?v=072','./identity.css?v=072','./iphone.css?v=072','./app-shell.css?v=072','./app-v4.js?v=072','./core.js?v=072','./media.js?v=072','./ui.js?v=072','./content.js?v=072','./content/aura-frases.json','./widget-core.js?v=072','./Forja.js?v=072','./widgets.html','./content/personagens-aura.json','./manifest.webmanifest','./assets/forja-icon-180.png','./assets/forja-icon-192.png','./assets/forja-icon-512.png','./assets/fonts/barlow-700.ttf','./assets/fonts/barlow-800.ttf','./assets/fonts/manrope-400.ttf','./assets/fonts/manrope-600.ttf','./assets/fonts/manrope-700.ttf','./assets/rock-lee.png','./assets/midoriya.png','./update.js?v=072','./widget-snapshot.js?v=072'];
 // Optional public art downloads must not block installation of an update.
 const OPTIONAL=['./assets/rock-lee-aura-05.png','./assets/rock-lee-aura-06.png','./assets/might-guy-01.png','./assets/naruto-01.png','./assets/minato-01.png','./assets/all-might-01.png','./assets/edward-elric-01.png','./assets/killua-01.png','./assets/midoriya-training.png','./assets/lee-training.png'];
 const MEDIA='forja-public-media';
@@ -10,7 +10,7 @@ self.addEventListener('activate',e=>e.waitUntil((async()=>{
  // Recover old app shells on screens whose records are saved immediately.
  // Never interrupt diary, challenge editor, or an inspiration draft.
  const scope=new URL(self.registration.scope);
- for(const client of await self.clients.matchAll({type:'window'})){const url=new URL(client.url);if(url.origin!==scope.origin||![scope.pathname,scope.pathname+'index.html'].includes(url.pathname)||!['','#hoje','#conquistas','#configuracoes'].includes(url.hash)||url.searchParams.get('v')==='071')continue;url.searchParams.set('v','071');try{await client.navigate(url.href);}catch(_){}}
+ for(const client of await self.clients.matchAll({type:'window'})){const url=new URL(client.url);if(url.origin!==scope.origin||![scope.pathname,scope.pathname+'index.html'].includes(url.pathname)||!['','#hoje','#conquistas','#configuracoes'].includes(url.hash)||url.searchParams.get('v')==='072')continue;url.searchParams.set('v','072');try{await client.navigate(url.href);}catch(_){}}
 })()));
 self.addEventListener('fetch',e=>{const url=new URL(e.request.url);if(e.request.method!=='GET'||url.origin!==self.location.origin)return;
  if(url.pathname.endsWith('/version.json')){e.respondWith(fetch(e.request,{cache:'no-store'}));return;}

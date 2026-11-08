@@ -183,3 +183,14 @@ Validação desta versão: 35 testes automatizados passaram. No navegador local,
 Ajuste de compilação do protótipo: desativada a exigência automática de catálogo AppIcon ausente; este teste inicial pode usar ícone genérico. Não altera os ícones do FORJA web.
 
 Validação nativa: compilação iPhone arm64 de app + extensão e testes Swift passaram no workflow https://github.com/privz/forja/actions/runs/41632370998. IPA sem assinatura gerado e conferido com executáveis de app/widget, sem perfis de provisionamento. Instalação, App Groups, renovação e notificações no iPhone continuam pendentes.
+
+## 0.10.0 — 2026-11-08
+
+- Meta atingida encerra novos registros naquele período e passa a oferecer o resgate. O limite também vale para tentativas de adicionar registros retroativos; registros existentes podem ser corrigidos antes do resgate.
+- Resgate remove o desafio das listas atuais de Hoje e Conquistas. A recompensa aparece no histórico, com nome do desafio e data. Metas semanais retornam na segunda-feira, com contagem do novo período; mensais permanecem no mês escolhido. Desafios encerrados e futuros continuam disponíveis em uma seção recolhida de gerenciamento.
+- Excluir uma entrada do histórico não libera outro resgate no mesmo período. Resgates anteriores continuam compatíveis e são reconhecidos automaticamente.
+- Resumo da semana acessível em Hoje e Jornada: tarefas concluídas, sem conclusão registrada, dias completos e lista por dia, com navegação para semanas anteriores e para os registros do calendário. Dias futuros não entram nos totais e dias sem tarefas não contam como dias completos.
+- Planejamento dos dias registrados passa a guardar títulos e estados dos desafios localmente. Edições/exclusões preservam o histórico conhecido dos dias anteriores; dados antigos sem esse histórico são reconstruídos com a configuração disponível e recebem aviso de estimativa. Não é possível recuperar definições antigas já excluídas.
+- Calendário e envio ao Scriptable deixam de cobrar novas tarefas de metas já atingidas no restante do período. A sincronização do widget continua manual. Armazenamentos `forja-v1` e `forja-media` mantidos; sem backend ou envio de dados pessoais ao GitHub. Revisão offline 072.
+
+Validação: 47 testes automatizados passaram, incluindo encerramento, resgate, virada semanal, histórico, resumo e widgets. No navegador local com dados fictícios, foram registrados quatro dias completos, conferidos os totais de 8 tarefas feitas e 3 sem conclusão, resgatada a recompensa e verificada a remoção dos desafios atuais. Layout conferido em larguras de 390 e 320 px, sem transbordamento horizontal. Safari/PWA no iPhone requer conferência no aparelho.
